@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import * as C from './AppStyles'
-import { GlobalStyle } from '../Home/AppStyles'
-
+import * as C from '../../AppStyles'
 
 
 
@@ -31,6 +29,7 @@ const Items = () => {
         setRequisicao(json.results)
         console.log(requisicao)
     }
+    
     return (
 
         <C.Container
