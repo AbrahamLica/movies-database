@@ -1,11 +1,12 @@
-import React from 'react'
+import * as C from '../../AppStyles'
 
 const Movie = () => {
   return (
-    <div>
+    <C.Container >
       teste
-    </div>
+      
+    </C.Container>
   )
 }
-
+  
 export default Movie

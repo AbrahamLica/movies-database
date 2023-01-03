@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 export type ContainerProps = {
+    id?: any
     width?: string
     heigth?: string
     backgroundColor?: string
@@ -19,6 +20,7 @@ export type ContainerProps = {
 }
 
 export const Container = styled.div<ContainerProps>`
+    id: ${props => props.id};
     width: ${props => props.width};
     height: ${props => props.heigth};
     background-color: ${props => props.backgroundColor};

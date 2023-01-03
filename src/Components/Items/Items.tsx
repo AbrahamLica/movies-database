@@ -68,7 +68,7 @@ const Items = () => {
                             flex='1'
                             alignItems='flex-start'
                         >
-                            <C.Text color='white' bold fontSize='18px'>{item.title}</C.Text>
+                            <C.Text color='white' bold fontSize='18px' id='teste'>{item.title}</C.Text>
 
                         </C.Container>
 
