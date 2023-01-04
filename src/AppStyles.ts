@@ -84,12 +84,14 @@ export type TextProps = {
     color?: string
     bold?: boolean
     fontSize?: string
+    textAlign?: string
 }
 
 export const Text = styled.p<TextProps>`
     color: ${props => props.color};
     font-weight: ${props => props.bold ? 'bold' : 'light'};
     font-size: ${props => props.fontSize};
+    text-align: ${props => props.textAlign};
 `
 
 export type InputProps = {

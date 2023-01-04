@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import * as C from '../../AppStyles'
+import { useContext } from 'react';
+import { Context } from '../../Context/Context';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Items = () => {
+
+    const { state, dispatch } = useContext(Context);
+    const navigate = useNavigate()
 
     useEffect(() => {
         executarRequisicao()
@@ -20,6 +26,7 @@ const Items = () => {
         popularity?: number
         vote_average?: number
         poster_path?: string
+        release_date?: string
     }
 
 
@@ -29,67 +36,109 @@ const Items = () => {
         setRequisicao(json.results)
         console.log(requisicao)
     }
-    
+
+    function abreDetalhes(
+        id: any,
+        titulo: string | undefined,
+        detalhes: string | undefined,
+        img: any,
+        mediaVotos: number|undefined,
+        dataLançamento: string|undefined) {
+        dispatch({
+            type: 'OPEN_DETAILS',
+            payload: {
+                id: id,
+                titulo: titulo,
+                detalhes: detalhes,
+                movieOpen: true,
+                img: img,
+                mediaVotos: mediaVotos,
+                dataLançamento: dataLançamento
+            }
+        })
+
+
+        navigate('/movie')
+    }
+
     return (
 
-        <C.Container
-            width='90%'
-            backgroundColor='black'
-            displayFlex
-            flexWrap
-            alignItems='center'
-            justifyContent='center'
-            margin='auto'
-        >
-            {requisicao.map((item, index) => (
-                <C.Container
-                    width='222px'
-                    heigth='450px'
-                    displayFlex
-                    column
-                    padding='30px'
-                    margin='10px'
-                >
+        <C.Container>
 
-                    <C.Container>
-                        <img src={`${imagePath}${item.poster_path}`} alt="" width={200} height={300} />
-                    </C.Container>
 
+            <C.Text
+                color='white'
+                bold
+                textAlign='center'
+                fontSize='40px'
+            >
+                Populares
+            </C.Text>
+
+            <C.Container
+                width='90%'
+                backgroundColor='black'
+                displayFlex
+                flexWrap
+                alignItems='center'
+                justifyContent='center'
+                margin='auto'
+            >
+
+
+
+
+                {requisicao.map((item, index) => (
                     <C.Container
-                        width='90%'
+                        width='222px'
+                        heigth='450px'
                         displayFlex
                         column
-                        flex='1'
+                        padding='30px'
+                        margin='10px'
                     >
 
+                        <C.Container>
+                            <img src={`${imagePath}${item.poster_path}`} alt="" width={200} height={300} />
+                        </C.Container>
+
                         <C.Container
+                            width='90%'
                             displayFlex
                             column
                             flex='1'
-                            alignItems='flex-start'
                         >
-                            <C.Text color='white' bold fontSize='18px' id='teste'>{item.title}</C.Text>
+
+                            <C.Container
+                                displayFlex
+                                column
+                                flex='1'
+                                alignItems='flex-start'
+                            >
+                                <C.Text color='white' bold fontSize='18px' id='teste'>{item.title}</C.Text>
+
+                            </C.Container>
+
+                            <C.Container
+                                displayFlex
+                                justifyContent='center'
+                            >
+                                <C.Button onClick={() => abreDetalhes(item.id, item.title, item.overview, item.poster_path, item.vote_average, item.release_date)}>Detalhes</C.Button>
+                                <C.Button onClick={() => console.log(state.movies)}>teste</C.Button>
+                            </C.Container>
 
                         </C.Container>
 
-                        <C.Container
-                            displayFlex
-                            justifyContent='center'
-                        >
-                            <C.Button>Detalhes</C.Button>
-                        </C.Container>
+
+
+
+
 
                     </C.Container>
 
+                ))}
 
-
-
-
-
-                </C.Container>
-
-            ))}
-
+            </C.Container>
         </C.Container>
 
     )
