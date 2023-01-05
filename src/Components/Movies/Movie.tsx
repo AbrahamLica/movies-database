@@ -2,6 +2,8 @@ import * as C from '../../AppStyles'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../../Context/Context'
 import star from '../../imgs/star.png'
+import date from '../../imgs/date.svg'
+import description from '../../imgs/description.svg'
 
 const Movie = () => {
 
@@ -45,14 +47,38 @@ const Movie = () => {
       </C.Container>
 
       <C.Container>
-        <C.Text color='white'>{dataFormatada}</C.Text>
+
+
+        <C.Container
+          displayFlex
+          column
+        >
+          <C.Container displayFlex alignItems='center'>
+            <img src={date} alt="" width={30} height={30} />
+            <C.Text color='white'>Data de Lançamento</C.Text>
+          </C.Container>
+          <C.Text color='white'>{dataFormatada}</C.Text>
+        </C.Container>
+
+        <C.Container>
+
+
+          <C.Container displayFlex alignItems='center'>
+            <img src={description} alt="" width={30} height={30} />
+            <C.Text color='white'>Descrição</C.Text>
+          </C.Container>
+
+          <C.Text color='white'>{state.movies.detalhes}</C.Text>
+
+
+        </C.Container>
+
+
       </C.Container>
 
-      <C.Container>
-      <C.Text color='white'>{state.movies.detalhes}</C.Text>
-      </C.Container>
 
-      <C.Button onClick={()=> console.log(state.movies)}>teste</C.Button>
+
+      <C.Button onClick={() => console.log(state.movies)}>teste</C.Button>
 
 
 

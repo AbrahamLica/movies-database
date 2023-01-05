@@ -34,7 +34,6 @@ const Items = () => {
         var req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=pt-BR&page=1`)
         var json = await req.json()
         setRequisicao(json.results)
-        console.log(requisicao)
     }
 
     function abreDetalhes(
@@ -96,6 +95,7 @@ const Items = () => {
                         column
                         padding='30px'
                         margin='10px'
+                        key={index}
                     >
 
                         <C.Container>
