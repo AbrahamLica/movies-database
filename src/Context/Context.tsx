@@ -13,7 +13,10 @@ export const MoviesReducerInitialState: MoviesReducerInitialStateType = {
     movieOpen: false,
     img: '',
     mediaVotos: 0,
-    dataLançamento: ''
+    dataLançamento: '',
+    homePage: true,
+    openPageSelectedCategory: false,
+    selectedCategory: ''
 }
 
 export function reducerMovies(state: MoviesReducerInitialStateType, action: ActionType) {
@@ -30,6 +33,30 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 dataLançamento: action.payload.dataLançamento
             }
             break;
+
+        case 'OPEN_POPULARES':
+            return {
+                ...state,
+                openPageSelectedCategory: action.payload.openPageSelectedCategory,
+                homePage: action.payload.homePage,
+                selectedCategory: action.payload.selectedCategory
+            }
+
+        case 'OPEN_EM-CARTAZ':
+            return {
+                ...state,
+                openPageSelectedCategory: action.payload.openPageSelectedCategory,
+                homePage: action.payload.homePage,
+                selectedCategory: action.payload.selectedCategory
+            }
+
+        case 'OPEN_MAISVOTADOS':
+            return {
+                ...state,
+                openPageSelectedCategory: action.payload.openPageSelectedCategory,
+                homePage: action.payload.homePage,
+                selectedCategory: action.payload.selectedCategory
+            }
 
     }
     return state

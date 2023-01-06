@@ -6,6 +6,9 @@ export type MoviesReducerInitialStateType = {
     img: string
     mediaVotos: number
     dataLançamento: string
+    homePage: boolean
+    openPageSelectedCategory: boolean
+    selectedCategory: string
 }
 
 export type ActionType = {
