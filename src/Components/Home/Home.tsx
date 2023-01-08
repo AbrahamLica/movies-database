@@ -20,7 +20,7 @@ const Home = () => {
 
       <Header></Header>
 
-      <C.Container width="100%">
+      <C.Container width="80%">
         {state.movies.homePage && <Card></Card>}
         {state.movies.openPageSelectedCategory && <Items></Items>}
       </C.Container>
