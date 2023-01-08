@@ -1,6 +1,5 @@
-import React from "react";
 import * as C from "../../AppStyles";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../Context/Context";
 import avengers from "../../imgs/avengers.jpeg";
 import avatar from "../../imgs/avatar.jpg";
@@ -44,13 +43,8 @@ const Card = () => {
   }
 
   return (
-    <C.Container
-      color="white"
-      displayFlex
-      padding="30px"
-    //   alignItems="center"
-    //   justifyContent="space-between"
-    >
+
+    <React.Fragment>
       <C.Container>
         <C.Container
           onClick={openLancamentos}
@@ -143,7 +137,7 @@ const Card = () => {
           Mais Votados
         </C.Text>
       </C.Container>
-    </C.Container>
+    </React.Fragment>
   );
 };
 

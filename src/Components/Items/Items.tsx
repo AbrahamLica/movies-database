@@ -3,6 +3,8 @@ import * as C from "../../AppStyles";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
+import next from '../../imgs/next.svg'
+import back from '../../imgs/back.svg'
 
 const Items = () => {
   const { state, dispatch } = useContext(Context);
@@ -53,6 +55,16 @@ const Items = () => {
     }
   }
 
+  function voltarPagina() {
+    if (numberPage == 1) {
+
+    } else {
+      setNumberPage(numberPage - 1);
+      executarRequisicao();
+    }
+
+  }
+
   function passarPagina() {
     setNumberPage(numberPage + 1);
     executarRequisicao();
@@ -84,23 +96,19 @@ const Items = () => {
 
   return (
     <C.Container
-      width="100%"
       displayFlex
       column
       alignItems="center"
-      justifyContent="center"
     >
       <C.Container
         width="80%"
         displayFlex
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="center"
       >
         <C.Text color="white" bold textAlign="center" fontSize="40px">
           {categoriaTitulo}
         </C.Text>
-
-        <C.Button onClick={passarPagina}>Próxima pág.</C.Button>
       </C.Container>
 
       <C.Container
@@ -158,6 +166,47 @@ const Items = () => {
           </C.Container>
         ))}
       </C.Container>
+
+      <C.Container
+        width="100%"
+        displayFlex
+        alignItems="center"
+        justifyContent="center"
+      >
+        <C.Container
+          border="1px solid white"
+          displayFlex
+          alignItems="center"
+          justifyContent="center"
+          alignContent="flex-end"
+          width="30px"
+          heigth="30px"
+          padding="5px"
+        >
+          <C.Text
+            fontSize="25px"
+            color="white"
+            bold
+            textAlign="center"
+          >
+            {numberPage}
+          </C.Text>
+        </C.Container>
+
+        <C.Container displayFlex justifyContent="flex-end" width="100%">
+          <C.Container onClick={voltarPagina} cursorPointer>
+            <img src={back} alt="" width='40px' />
+          </C.Container>
+
+          <C.Container onClick={passarPagina} cursorPointer margin="0 30px">
+            <img src={next} alt="" width='40px' />
+          </C.Container>
+        </C.Container>
+        
+      </C.Container>
+
+
+
     </C.Container>
   );
 };

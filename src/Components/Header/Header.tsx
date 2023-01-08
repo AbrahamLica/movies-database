@@ -8,10 +8,8 @@ const Header = () => {
 
     <C.Container
       displayFlex
-      alignItems="center"
       justifyContent="space-between"
       padding="20px"
-      width="90%"
     >
 
       <C.Container displayFlex alignItems="center">

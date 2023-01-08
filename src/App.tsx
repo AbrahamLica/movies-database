@@ -9,7 +9,6 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
