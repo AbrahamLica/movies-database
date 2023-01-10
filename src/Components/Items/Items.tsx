@@ -3,8 +3,8 @@ import * as C from "../../AppStyles";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
-import next from '../../imgs/next.svg'
-import back from '../../imgs/back.svg'
+import next from "../../imgs/next.svg";
+import back from "../../imgs/back.svg";
 
 const Items = () => {
   const { state, dispatch } = useContext(Context);
@@ -14,7 +14,7 @@ const Items = () => {
   const key: string = "7c41526b8e248796d7b1e264a1e5730d";
   const imagePath: string = "https://image.tmdb.org/t/p/w300/";
   const [numberPage, setNumberPage] = useState(1);
-  const [categoriaTitulo, setCategoriaTitulo] = useState('')
+  const [categoriaTitulo, setCategoriaTitulo] = useState("");
 
   useEffect(() => {
     executarRequisicao();
@@ -37,32 +37,30 @@ const Items = () => {
       );
       var json = await req.json();
       setRequisicao(json.results);
-      setCategoriaTitulo('Populares')
+      setCategoriaTitulo("Populares");
     } else if (state.movies.selectedCategory == "em-cartaz") {
       var req = await fetch(
         `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=pt-BR&page=${numberPage}`
       );
       var json = await req.json();
       setRequisicao(json.results);
-      setCategoriaTitulo('Em Cartaz')
+      setCategoriaTitulo("Em Cartaz");
     } else if (state.movies.selectedCategory == "maisvotados") {
       var req = await fetch(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=pt-BR&page=${numberPage}`
       );
       var json = await req.json();
       setRequisicao(json.results);
-      setCategoriaTitulo('Mais Votados')
+      setCategoriaTitulo("Mais Votados");
     }
   }
 
   function voltarPagina() {
     if (numberPage == 1) {
-
     } else {
       setNumberPage(numberPage - 1);
       executarRequisicao();
     }
-
   }
 
   function passarPagina() {
@@ -95,11 +93,7 @@ const Items = () => {
   }
 
   return (
-    <C.Container
-      displayFlex
-      column
-      alignItems="center"
-    >
+    <C.Container displayFlex column alignItems="center">
       <C.Container
         width="80%"
         displayFlex
@@ -168,45 +162,43 @@ const Items = () => {
       </C.Container>
 
       <C.Container
-        width="100%"
         displayFlex
-        alignItems="center"
-        justifyContent="center"
+        width="100%"
+        padding="10px"
       >
-        <C.Container
-          border="1px solid white"
-          displayFlex
-          alignItems="center"
-          justifyContent="center"
-          alignContent="flex-end"
-          width="30px"
-          heigth="30px"
-          padding="5px"
-        >
-          <C.Text
-            fontSize="25px"
-            color="white"
-            bold
-            textAlign="center"
+        <C.Container width="50%" displayFlex justifyContent="flex-end">
+          <C.Container
+            borderRadius="50%"
+            border="1px solid #17c3b2"
+            displayFlex
+            alignItems="center"
+            justifyContent="center"
+            width="30px"
+            heigth="30px"
+            padding="5px"
           >
-            {numberPage}
-          </C.Text>
-        </C.Container>
-
-        <C.Container displayFlex justifyContent="flex-end" width="100%">
-          <C.Container onClick={voltarPagina} cursorPointer>
-            <img src={back} alt="" width='40px' />
-          </C.Container>
-
-          <C.Container onClick={passarPagina} cursorPointer margin="0 30px">
-            <img src={next} alt="" width='40px' />
+            <C.Text fontSize="25px" color="white" bold textAlign="center">
+              {numberPage}
+            </C.Text>
           </C.Container>
         </C.Container>
-        
+
+        <C.Container
+          displayFlex
+          justifyContent="flex-end"
+          width="50%"
+        >
+          <C.Container displayFlex>
+            <C.Container onClick={voltarPagina} cursorPointer>
+              <img src={back} alt="" width="40px" />
+            </C.Container>
+
+            <C.Container onClick={passarPagina} cursorPointer margin="0 30px">
+              <img src={next} alt="" width="40px" />
+            </C.Container>
+          </C.Container>
+        </C.Container>
       </C.Container>
-
-
-
     </C.Container>
   );
 };

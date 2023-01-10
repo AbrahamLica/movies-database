@@ -15,6 +15,9 @@ export const GlobalStyle = createGlobalStyle`
         align-items: center;
         width: 100%;
         background-color: black;
+        
+        /* align-content: ; */
+        /* justify-content: ; */
     }
 `;
 

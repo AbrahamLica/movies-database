@@ -10,7 +10,6 @@ export type ContainerProps = {
   flex?: string;
   flexWrap?: boolean;
   alignItems?: string;
-  justifyContent?: string;
   margin?: string;
   padding?: string;
   column?: boolean;
@@ -20,8 +19,7 @@ export type ContainerProps = {
   backgroundImage?: string;
   backgroundPosition?: string;
   backgroundSize?: string;
-  alignContent?: string;
-  alignSelf?: string
+  justifyContent?: string
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -36,9 +34,6 @@ export const Container = styled.div<ContainerProps>`
   flex-wrap: ${(props) => props.flexWrap && "wrap"};
   align-items: ${(props) => props.alignItems};
   justify-content: ${(props) => props.justifyContent};
-  align-content: ${(props) => props.alignContent};
-  /* align-content: ; */
-  align-self: ${(props) => props.alignSelf};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   border: ${(props) => props.border};
