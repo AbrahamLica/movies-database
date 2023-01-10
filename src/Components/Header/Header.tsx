@@ -2,8 +2,24 @@ import React from "react";
 import * as C from "../../AppStyles";
 import logo from "../../imgs/logo.png";
 import glass from "../../imgs/glass.png";
+import { useContext } from "react";
+import { Context } from "../../Context/Context";
 
 const Header = () => {
+
+  const { state, dispatch } = useContext(Context);
+
+  function backToHome() {
+
+    dispatch({
+      type: 'BACK_HOME',
+      payload: {
+        openPageSelectedCategory: false,
+        homePage: true
+      }
+    })
+  }
+
   return (
 
     <C.Container
@@ -12,7 +28,7 @@ const Header = () => {
       padding="20px"
     >
 
-      <C.Container displayFlex alignItems="center">
+      <C.Container displayFlex alignItems="center" cursorPointer onClick={backToHome}>
         <img src={logo} alt="" />
         <C.Text color="white" bold>
           Movies Library

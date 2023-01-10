@@ -9,11 +9,18 @@ const Home = () => {
   const { state, dispatch } = useContext(Context);
 
   return (
-    <C.Container width="100%">
+    <C.Container
+      width="100%"
+      displayFlex
+      column
+      alignItems="center"
+      justifyContent="center"
+    >
+      <C.Container width="100%">
+        <Header></Header>
+      </C.Container>
 
-      <Header></Header>
-
-      {state.movies.homePage &&
+      {state.movies.homePage && (
         <C.Container
           width="90vw"
           displayFlex
@@ -22,11 +29,9 @@ const Home = () => {
         >
           <Card></Card>
         </C.Container>
-      }
-
+      )}
 
       {state.movies.openPageSelectedCategory && <Items></Items>}
-
     </C.Container>
   );
 };

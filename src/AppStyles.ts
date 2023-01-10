@@ -19,7 +19,7 @@ export type ContainerProps = {
   backgroundImage?: string;
   backgroundPosition?: string;
   backgroundSize?: string;
-  justifyContent?: string
+  justifyContent?: string;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -43,7 +43,9 @@ export const Container = styled.div<ContainerProps>`
   background-repeat: no-repeat;
   background-size: ${(props) => props.backgroundSize};
   cursor: ${(props) => (props.cursorPointer ? "pointer" : null)};
+  overflow: hidden;
 `;
+
 export const Img = styled.img`
   min-height: 400px;
 `;

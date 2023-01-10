@@ -34,6 +34,13 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
             }
             break;
 
+        case 'BACK_HOME':
+            return{
+                ...state,
+                openPageSelectedCategory: action.payload.openPageSelectedCategory,
+                homePage: action.payload.homePage
+            }
+
         case 'OPEN_POPULARES':
             return {
                 ...state,
