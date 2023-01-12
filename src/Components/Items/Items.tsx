@@ -14,7 +14,7 @@ const Items = () => {
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const key: string = "7c41526b8e248796d7b1e264a1e5730d";
   const imagePath: string = "https://image.tmdb.org/t/p/w300/";
-  const [numberPage, setNumberPage] = useState(1);
+  const [numberPage, setNumberPage] = useState(state.movies.paginaAtual);
   const [categoriaTitulo, setCategoriaTitulo] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -52,7 +52,9 @@ const Items = () => {
       var json = await req.json();
       setRequisicao(json.results);
       setCategoriaTitulo("Em Cartaz");
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     } else if (state.movies.selectedCategory == "maisvotados") {
       setLoading(true);
       var req = await fetch(
@@ -61,7 +63,9 @@ const Items = () => {
       var json = await req.json();
       setRequisicao(json.results);
       setCategoriaTitulo("Mais Votados");
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   }
 
@@ -69,12 +73,25 @@ const Items = () => {
     if (numberPage == 1) {
     } else {
       setNumberPage(numberPage - 1);
+
+      dispatch({
+        type: "BACK_PAGE",
+        payload: {
+          paginaAtual: numberPage,
+        },
+      });
       executarRequisicao();
     }
   }
 
   function passarPagina() {
     setNumberPage(numberPage + 1);
+    dispatch({
+      type: "NEXT_PAGE",
+      payload: {
+        paginaAtual: numberPage,
+      },
+    });
     executarRequisicao();
   }
 
@@ -96,6 +113,7 @@ const Items = () => {
         img: img,
         mediaVotos: mediaVotos,
         dataLançamento: dataLançamento,
+        paginaAtual: numberPage,
       },
     });
 
@@ -107,8 +125,8 @@ const Items = () => {
       {loading ? (
         <C.Container
           displayFlex
-          width="100%"
-          heigth="100%"
+          width="90vw"
+          heigth="80vh"
           alignItems="center"
           justifyContent="center"
         >

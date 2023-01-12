@@ -4,10 +4,13 @@ import { Context } from "../../Context/Context";
 import star from "../../imgs/star.png";
 import date from "../../imgs/date.svg";
 import description from "../../imgs/description.svg";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Movie = () => {
   const { state, dispatch } = useContext(Context);
   const [dataFormatada, setDataFormatada] = useState<any>();
+  const navigate = useNavigate()
+  
 
   useEffect(() => {
     var data = state.movies.dataLançamento;
@@ -16,6 +19,10 @@ const Movie = () => {
     setDataFormatada(dataFinal);
     console.log(dataa);
   }, []);
+
+  function voltar(){
+    navigate(-1)
+  }
 
   return (
     <C.Container
@@ -69,7 +76,7 @@ const Movie = () => {
         </C.Container>
       </C.Container>
 
-      <C.Button onClick={() => console.log(state.movies)}>teste</C.Button>
+      <C.Button onClick={voltar}>Voltar</C.Button>
     </C.Container>
   );
 };

@@ -16,9 +16,7 @@ const Home = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <C.Container width="100%">
-        <Header></Header>
-      </C.Container>
+      <Header></Header>
 
       {state.movies.homePage && (
         <C.Container

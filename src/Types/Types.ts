@@ -9,6 +9,7 @@ export type MoviesReducerInitialStateType = {
     homePage: boolean
     openPageSelectedCategory: boolean
     selectedCategory: string
+    paginaAtual: number
 }
 
 export type ActionType = {

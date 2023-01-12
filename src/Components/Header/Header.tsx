@@ -15,7 +15,8 @@ const Header = () => {
       type: 'BACK_HOME',
       payload: {
         openPageSelectedCategory: false,
-        homePage: true
+        homePage: true,
+        paginaAtual: 1
       }
     })
   }
@@ -26,6 +27,7 @@ const Header = () => {
       displayFlex
       justifyContent="space-between"
       padding="20px"
+      width="90vw"
     >
 
       <C.Container displayFlex alignItems="center" cursorPointer onClick={backToHome}>

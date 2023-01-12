@@ -16,7 +16,8 @@ export const MoviesReducerInitialState: MoviesReducerInitialStateType = {
     dataLançamento: '',
     homePage: true,
     openPageSelectedCategory: false,
-    selectedCategory: ''
+    selectedCategory: '',
+    paginaAtual: 1
 }
 
 export function reducerMovies(state: MoviesReducerInitialStateType, action: ActionType) {
@@ -30,7 +31,8 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 movieOpen: action.payload.movieOpen,
                 img: action.payload.img,
                 mediaVotos: action.payload.mediaVotos,
-                dataLançamento: action.payload.dataLançamento
+                dataLançamento: action.payload.dataLançamento,
+                paginaAtual: action.payload.paginaAtual
             }
             break;
 
@@ -38,7 +40,8 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
             return{
                 ...state,
                 openPageSelectedCategory: action.payload.openPageSelectedCategory,
-                homePage: action.payload.homePage
+                homePage: action.payload.homePage,
+                paginaAtual: action.payload.paginaAtual
             }
 
         case 'OPEN_POPULARES':
@@ -63,6 +66,18 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 openPageSelectedCategory: action.payload.openPageSelectedCategory,
                 homePage: action.payload.homePage,
                 selectedCategory: action.payload.selectedCategory
+            }
+
+        case 'NEXT_PAGE':
+            return {
+                ...state,
+                paginaAtual: action.payload.paginaAtual
+            }
+
+        case 'BACK_PAGE':
+            return {
+                ...state,
+                paginaAtual: action.payload.paginaAtual
             }
 
     }

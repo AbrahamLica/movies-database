@@ -45,7 +45,7 @@ const Card = () => {
   return (
 
     <React.Fragment>
-      <C.Container>
+      <C.Container >
         <C.Container
           onClick={openLancamentos}
           width="200px"
