@@ -9,6 +9,7 @@ export type MoviesReducerInitialStateType = {
     homePage: boolean
     openPageSelectedCategory: boolean
     selectedCategory: string
+    searchMovie: boolean
     paginaAtual: number
 }
 
@@ -32,4 +33,14 @@ export type ContextType = {
 export type InitialStateContextType = {
     movies: MoviesReducerInitialStateType
 }
+
+export type RequisicaoType = {
+    id?: number;
+    title?: string;
+    overview?: string;
+    popularity?: number;
+    vote_average?: number;
+    poster_path?: string;
+    release_date?: string;
+  };
 

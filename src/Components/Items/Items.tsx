@@ -6,14 +6,16 @@ import { useNavigate } from "react-router-dom";
 import next from "../../imgs/next.svg";
 import back from "../../imgs/back.svg";
 import "./index.css";
+import { RequisicaoType } from "../../Types/Types";
+
+export const key: string = "7c41526b8e248796d7b1e264a1e5730d";
+export const imagePath: string = "https://image.tmdb.org/t/p/w300/";
 
 const Items = () => {
   const { state, dispatch } = useContext(Context);
   const navigate = useNavigate();
 
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
-  const key: string = "7c41526b8e248796d7b1e264a1e5730d";
-  const imagePath: string = "https://image.tmdb.org/t/p/w300/";
   const [numberPage, setNumberPage] = useState(state.movies.paginaAtual);
   const [categoriaTitulo, setCategoriaTitulo] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,16 +23,6 @@ const Items = () => {
   useEffect(() => {
     executarRequisicao();
   }, [numberPage]);
-
-  type RequisicaoType = {
-    id?: number;
-    title?: string;
-    overview?: string;
-    popularity?: number;
-    vote_average?: number;
-    poster_path?: string;
-    release_date?: string;
-  };
 
   async function executarRequisicao() {
     if (state.movies.selectedCategory == "populares") {

@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import Items from "../Items/Items";
 import * as C from "../../AppStyles";
 import Card from "../Card/Card";
+import MovieSearched from "../MovieSearched/MovieSearched";
 
 const Home = () => {
   const { state, dispatch } = useContext(Context);
@@ -30,6 +31,7 @@ const Home = () => {
       )}
 
       {state.movies.openPageSelectedCategory && <Items></Items>}
+      
     </C.Container>
   );
 };

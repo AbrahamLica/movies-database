@@ -27,14 +27,9 @@ const Header = () => {
   }
 
   async function searchMovie() {
-    // console.log(movie);
-    
-    // navigate(`/${movie}`)
-
-
-
+    navigate(`/${movie}`)
     var req = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=7c41526b8e248796d7b1e264a1e5730d&query=batman`
+      `https://api.themoviedb.org/3/search/movie?api_key=7c41526b8e248796d7b1e264a1e5730d&query=${movie}`
     );
     var json = await req.json();
   }
@@ -46,6 +41,7 @@ const Header = () => {
       padding="20px"
       width="90vw"
     >
+      
       <C.Container
         displayFlex
         alignItems="center"

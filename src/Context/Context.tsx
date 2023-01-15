@@ -17,6 +17,7 @@ export const MoviesReducerInitialState: MoviesReducerInitialStateType = {
     homePage: true,
     openPageSelectedCategory: false,
     selectedCategory: '',
+    searchMovie: false,
     paginaAtual: 1
 }
 
@@ -78,6 +79,13 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
             return {
                 ...state,
                 paginaAtual: action.payload.paginaAtual
+            }
+
+        case 'SEARCH_MOVIE':
+            return {
+                ...state,
+                searchMovie: action.payload.searchMovie,
+                homePage: action.payload.homePage
             }
 
     }
