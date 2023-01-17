@@ -46,6 +46,21 @@ export const Container = styled.div<ContainerProps>`
   overflow: hidden;
 `;
 
+export const ContainerCard = styled.div<ContainerProps>`
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-image: url(${(props) => props.backgroundImage});
+  background-size: cover;
+  background-position: center;
+
+`;
+
 export const Img = styled.img`
   min-height: 400px;
 `;
@@ -109,6 +124,18 @@ export const Text = styled.p<TextProps>`
   border-radius: ${(props) => props.borderRadius};
   padding: ${(props) => props.padding};
   cursor: ${(props) => (props.cursorPointer ? "pointer" : null)};
+`;
+
+export const TextCard = styled.p<TextProps>`
+
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  font-size: 25px;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: #17c3b2;
 `;
 
 export type InputProps = {

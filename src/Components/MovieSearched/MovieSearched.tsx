@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import * as C from "../../AppStyles";
 import { RequisicaoType } from "../../Types/Types";
 import Header from "../Header/Header";
-import { key } from "../Items/Items";
+import { key } from "../Items/MappedItems";
 
 const MovieSearched = () => {
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);

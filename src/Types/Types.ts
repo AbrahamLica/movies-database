@@ -11,6 +11,7 @@ export type MoviesReducerInitialStateType = {
     selectedCategory: string
     searchMovie: boolean
     paginaAtual: number
+    loading: boolean
 }
 
 export type ActionType = {

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import Header from "../Header/Header";
-import Items from "../Items/Items";
 import * as C from "../../AppStyles";
 import Card from "../Card/Card";
-import MovieSearched from "../MovieSearched/MovieSearched";
+import MappedItems from "../Items/MappedItems";
 
 const Home = () => {
+  
   const { state, dispatch } = useContext(Context);
 
   return (
@@ -21,7 +21,7 @@ const Home = () => {
 
       {state.movies.homePage && (
         <C.Container
-          width="90vw"
+          width="100%"
           displayFlex
           justifyContent="space-between"
           margin="30px"
@@ -30,7 +30,7 @@ const Home = () => {
         </C.Container>
       )}
 
-      {state.movies.openPageSelectedCategory && <Items></Items>}
+      {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}
       
     </C.Container>
   );

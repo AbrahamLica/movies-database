@@ -6,7 +6,6 @@ import avatar from "../../imgs/avatar.jpg";
 import poderoso from "../../imgs/poderoso.jpg";
 
 const Card = () => {
-
   const { state, dispatch } = useContext(Context);
 
   function openPopulares() {
@@ -15,18 +14,18 @@ const Card = () => {
       payload: {
         openPageSelectedCategory: true,
         homePage: false,
-        selectedCategory: "populares",
+        selectedCategory: "Populares",
       },
     });
   }
 
   function openLancamentos() {
     dispatch({
-      type: "OPEN_EM-CARTAZ",
+      type: "OPEN_LANCAMENTOS",
       payload: {
         openPageSelectedCategory: true,
         homePage: false,
-        selectedCategory: "em-cartaz",
+        selectedCategory: "Lançamentos",
       },
     });
   }
@@ -37,105 +36,38 @@ const Card = () => {
       payload: {
         openPageSelectedCategory: true,
         homePage: false,
-        selectedCategory: "maisvotados",
+        selectedCategory: "Mais Votados",
       },
     });
   }
 
   return (
-
     <React.Fragment>
-      <C.Container >
-        <C.Container
+      <C.Container>
+        <C.ContainerCard
           onClick={openLancamentos}
-          width="200px"
-          heigth="200px"
-          displayFlex
-          alignItems="flex-end"
-          justifyContent="center"
-          borderRadius="20px"
-          margin="0 5px"
-          cursorPointer
           backgroundImage={avengers}
-          backgroundSize="cover"
-          backgroundPosition="center"
-        ></C.Container>
+        ></C.ContainerCard>
 
-        <C.Text
-          onClick={openLancamentos}
-          cursorPointer
-          textAlign="center"
-          bold
-          color="black"
-          fontSize="25px"
-          padding="6px"
-          borderRadius="10px"
-          backgroundColor="#17c3b2"
-        >
-          Lançamentos
-        </C.Text>
+        <C.TextCard onClick={openLancamentos}>Lançamentos</C.TextCard>
       </C.Container>
 
       <C.Container>
-        <C.Container
+        <C.ContainerCard
           onClick={openPopulares}
-          width="200px"
-          heigth="200px"
-          displayFlex
-          alignItems="flex-end"
-          justifyContent="center"
-          borderRadius="20px"
-          margin="0 5px"
-          cursorPointer
           backgroundImage={avatar}
-          backgroundSize="cover"
-          backgroundPosition="center"
-        ></C.Container>
+        ></C.ContainerCard>
 
-        <C.Text
-          cursorPointer
-          textAlign="center"
-          bold
-          color="black"
-          fontSize="25px"
-          padding="6px"
-          borderRadius="10px"
-          backgroundColor="#17c3b2"
-          onClick={openPopulares}
-        >
-          Populares
-        </C.Text>
+        <C.TextCard onClick={openPopulares}>Populares</C.TextCard>
       </C.Container>
 
       <C.Container>
-        <C.Container
+        <C.ContainerCard
           onClick={openMaisVotados}
-          width="200px"
-          heigth="200px"
-          displayFlex
-          alignItems="flex-end"
-          justifyContent="center"
-          borderRadius="20px"
-          margin="0 5px"
-          cursorPointer
           backgroundImage={poderoso}
-          backgroundSize="cover"
-          backgroundPosition="center"
-        ></C.Container>
+        ></C.ContainerCard>
 
-        <C.Text
-          onClick={openMaisVotados}
-          cursorPointer
-          textAlign="center"
-          bold
-          color="black"
-          fontSize="25px"
-          padding="6px"
-          borderRadius="10px"
-          backgroundColor="#17c3b2"
-        >
-          Mais Votados
-        </C.Text>
+        <C.TextCard onClick={openMaisVotados}>Mais Votados</C.TextCard>
       </C.Container>
     </React.Fragment>
   );

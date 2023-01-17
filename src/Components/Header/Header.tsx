@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import * as C from "../../AppStyles";
 import logo from "../../imgs/logo.png";
 import glass from "../../imgs/glass.png";
@@ -39,7 +39,7 @@ const Header = () => {
       displayFlex
       justifyContent="space-between"
       padding="20px"
-      width="90vw"
+      width="90%"
     >
       
       <C.Container

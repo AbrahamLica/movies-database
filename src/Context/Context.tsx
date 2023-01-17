@@ -18,7 +18,8 @@ export const MoviesReducerInitialState: MoviesReducerInitialStateType = {
     openPageSelectedCategory: false,
     selectedCategory: '',
     searchMovie: false,
-    paginaAtual: 1
+    paginaAtual: 1,
+    loading: false
 }
 
 export function reducerMovies(state: MoviesReducerInitialStateType, action: ActionType) {
@@ -53,7 +54,7 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 selectedCategory: action.payload.selectedCategory
             }
 
-        case 'OPEN_EM-CARTAZ':
+        case 'OPEN_LANCAMENTOS':
             return {
                 ...state,
                 openPageSelectedCategory: action.payload.openPageSelectedCategory,
@@ -87,6 +88,12 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 searchMovie: action.payload.searchMovie,
                 homePage: action.payload.homePage
             }
+
+        case 'SWITCH_LOADING':
+                return {
+                    ...state,
+                    loading: action.payload.loading
+                }
 
     }
     return state
