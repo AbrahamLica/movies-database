@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import * as C from "../../AppStyles";
 import logo from "../../imgs/logo.png";
 import glass from "../../imgs/glass.png";
@@ -35,13 +35,8 @@ const Header = () => {
   }
 
   return (
-    <C.Container
-      displayFlex
-      justifyContent="space-between"
-      padding="20px"
-      width="90%"
-    >
-      
+
+    <React.Fragment>
       <C.Container
         displayFlex
         alignItems="center"
@@ -76,7 +71,8 @@ const Header = () => {
           <img src={glass} alt="" width="23px" />
         </C.Container>
       </C.Container>
-    </C.Container>
+    </React.Fragment>
+
   );
 };
 

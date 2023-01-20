@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 import MappedItems from "../Items/MappedItems";
 
 const Home = () => {
-  
+
   const { state, dispatch } = useContext(Context);
 
   return (
@@ -17,11 +17,19 @@ const Home = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Header></Header>
+      <C.Container
+        displayFlex
+        justifyContent="space-between"
+        width="95%"
+        padding="10px"
+      >
+        <Header></Header>
+      </C.Container>
+
 
       {state.movies.homePage && (
         <C.Container
-          width="100%"
+          width="94vw"
           displayFlex
           justifyContent="space-between"
           margin="30px"
@@ -30,8 +38,11 @@ const Home = () => {
         </C.Container>
       )}
 
-      {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}
-      
+      <C.Container width="100%">
+        {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}
+      </C.Container>
+
+
     </C.Container>
   );
 };

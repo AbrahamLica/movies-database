@@ -18,36 +18,36 @@ const MappedItems = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    executarRequisicao();
+      executarRequisicao();
   }, [state.movies.paginaAtual]);
 
   async function executarRequisicao() {
-    if (state.movies.selectedCategory == "Populares") {
+    if (state.movies.selectedCategory === "Populares") {
       setLoading(true);
-      var req = await fetch(
+      let req = await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=pt-BR&page=${state.movies.paginaAtual}`
       );
-      var json = await req.json();
+      let json = await req.json();
       setRequisicao(json.results);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
-    } else if (state.movies.selectedCategory == "Lançamentos") {
+    } else if (state.movies.selectedCategory === "Lançamentos") {
       setLoading(true);
-      var req = await fetch(
+      let req = await fetch(
         `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=pt-BR&page=${state.movies.paginaAtual}`
       );
-      var json = await req.json();
+      let json = await req.json();
       setRequisicao(json.results);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
-    } else if (state.movies.selectedCategory == "Mais Votados") {
+    } else if (state.movies.selectedCategory === "Mais Votados") {
       setLoading(true);
-      var req = await fetch(
+      let req = await fetch(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=pt-BR&page=${state.movies.paginaAtual}`
       );
-      var json = await req.json();
+      let json = await req.json();
       setRequisicao(json.results);
       setTimeout(() => {
         setLoading(false);
@@ -104,14 +104,15 @@ const MappedItems = () => {
   }
 
   return (
-    <C.Container width="100%">
-      {loading ? (
+
+    <React.Fragment>
+      {loading  ? (
         <C.Container
           displayFlex
           alignItems="center"
           justifyContent="center"
           heigth="80vh"
-          width="80vw"
+          width="100vw"
         >
           <div className="three-body">
             <div className="three-body__dot"></div>
@@ -119,8 +120,15 @@ const MappedItems = () => {
             <div className="three-body__dot"></div>
           </div>
         </C.Container>
-      ) : (
-        <C.Container displayFlex column alignItems="center" width="100%">
+      ) : ( null)}
+        
+       
+        <C.Container
+          displayFlex
+          column
+          alignItems="center"
+          width="100%"
+        >
           <C.Text color="white" bold textAlign="center" fontSize="40px">
             {state.movies.selectedCategory}
           </C.Text>
@@ -218,8 +226,9 @@ const MappedItems = () => {
             </C.Container>
           </C.Container>
         </C.Container>
-      )}
-    </C.Container>
+      
+    </React.Fragment>
+
   );
 };
 
