@@ -34,8 +34,7 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 movieOpen: action.payload.movieOpen,
                 img: action.payload.img,
                 mediaVotos: action.payload.mediaVotos,
-                dataLançamento: action.payload.dataLançamento,
-                paginaAtual: action.payload.paginaAtual
+                dataLançamento: action.payload.dataLançamento
             }
             break;
 
@@ -89,7 +88,8 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 movie: action.payload.movie,
                 homePage: action.payload.homePage,
                 openPageSelectedCategory: action.payload.openPageSelectedCategory,
-                selectedCategory: action.payload.selectedCategory
+                selectedCategory: action.payload.selectedCategory,
+                paginaAtual: action.payload.paginaAtual
             }
 
         case 'SWITCH_LOADING':

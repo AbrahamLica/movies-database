@@ -14,6 +14,7 @@ export const imagePath: string = "https://image.tmdb.org/t/p/w300/";
 const MappedItems = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
+  const [reqTotalPages, setReqTotalPages] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const MappedItems = () => {
       );
       let json = await req.json();
       setRequisicao(json.results);
+      setReqTotalPages(json.total_pages);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -41,6 +43,7 @@ const MappedItems = () => {
       );
       let json = await req.json();
       setRequisicao(json.results);
+      setReqTotalPages(json.total_pages);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -51,16 +54,18 @@ const MappedItems = () => {
       );
       let json = await req.json();
       setRequisicao(json.results);
+      setReqTotalPages(json.total_pages);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
     } else {
       setLoading(true);
       let req = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&query=${state.movies.movie}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&page=${state.movies.paginaAtual}&query=${state.movies.movie}`
       );
       let json = await req.json();
       setRequisicao(json.results);
+      setReqTotalPages(json.total_pages);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -85,7 +90,7 @@ const MappedItems = () => {
         img: img,
         mediaVotos: mediaVotos,
         dataLançamento: dataLançamento,
-        paginaAtual: "1",
+        // paginaAtual: "1",
       },
     });
 
@@ -157,7 +162,11 @@ const MappedItems = () => {
             justifyContent="center"
           >
             {!requisicao.length && (
-              <C.Container displayFlex alignItems="center" justifyContent="center" >
+              <C.Container
+                displayFlex
+                alignItems="center"
+                justifyContent="center"
+              >
                 <C.Text color="white" fontSize="40px" textAlign="center">
                   {`Ops! Não achamos nenhum resultado para '${state.movies.movie}'`}
                 </C.Text>
@@ -215,7 +224,7 @@ const MappedItems = () => {
               </C.Container>
             ))}
 
-            {!requisicao.length ? null : (
+            {reqTotalPages < 20 ? null : (
               <C.Container displayFlex width="100%" padding="10px">
                 <C.Container width="50%" displayFlex justifyContent="flex-end">
                   <C.Container

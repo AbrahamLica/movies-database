@@ -4,7 +4,7 @@ import { Context } from "../../Context/Context";
 import star from "../../imgs/star.png";
 import date from "../../imgs/date.svg";
 import description from "../../imgs/description.svg";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Movie = () => {
   const { state, dispatch } = useContext(Context);

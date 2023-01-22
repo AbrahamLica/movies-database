@@ -28,15 +28,21 @@ export const Header = () => {
   }
 
   async function searchMovie() {
-    dispatch({
-      type: "SEARCH_MOVIE",
-      payload: {
-        movie: movie,
-        homePage: false,
-        openPageSelectedCategory: true,
-        selectedCategory: movie,
-      },
-    });
+    if (movie == '') {
+      alert('Por favor, preencha o campo')
+    } else  {
+      dispatch({
+        type: "SEARCH_MOVIE",
+        payload: {
+          movie: movie,
+          homePage: false,
+          openPageSelectedCategory: true,
+          selectedCategory: movie,
+          paginaAtual: 1
+        },
+      });
+    }
+    
   }
 
   return (
