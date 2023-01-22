@@ -15,11 +15,13 @@ const MappedItems = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-      executarRequisicao();
-  }, [state.movies.paginaAtual]);
+    executarRequisicao();
+    titulo();
+  }, [state.movies.paginaAtual, state.movies.movie, title]);
 
   async function executarRequisicao() {
     if (state.movies.selectedCategory === "Populares") {
@@ -46,6 +48,16 @@ const MappedItems = () => {
       setLoading(true);
       let req = await fetch(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=pt-BR&page=${state.movies.paginaAtual}`
+      );
+      let json = await req.json();
+      setRequisicao(json.results);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    } else {
+      setLoading(true);
+      let req = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&query=${state.movies.movie}`
       );
       let json = await req.json();
       setRequisicao(json.results);
@@ -103,10 +115,21 @@ const MappedItems = () => {
     executarRequisicao();
   }
 
-  return (
+  function titulo() {
+    if (
+      state.movies.selectedCategory == "Populares" ||
+      state.movies.selectedCategory == "Lançamentos" ||
+      state.movies.selectedCategory == "Mais Votados"
+    ) {
+      setTitle(state.movies.selectedCategory);
+    } else {
+      setTitle(`Mostrando resultados para '${state.movies.selectedCategory}'`);
+    }
+  }
 
+  return (
     <React.Fragment>
-      {loading  ? (
+      {loading ? (
         <C.Container
           displayFlex
           alignItems="center"
@@ -120,25 +143,27 @@ const MappedItems = () => {
             <div className="three-body__dot"></div>
           </div>
         </C.Container>
-      ) : ( null)}
-        
-       
-        <C.Container
-          displayFlex
-          column
-          alignItems="center"
-          width="100%"
-        >
+      ) : (
+        <C.Container displayFlex column alignItems="center" width="100%">
           <C.Text color="white" bold textAlign="center" fontSize="40px">
-            {state.movies.selectedCategory}
+            {title}
           </C.Text>
 
           <C.Container
+            width="100%"
             displayFlex
             flexWrap
             alignItems="center"
             justifyContent="center"
           >
+            {!requisicao.length && (
+              <C.Container displayFlex alignItems="center" justifyContent="center" >
+                <C.Text color="white" fontSize="40px" textAlign="center">
+                  {`Ops! Não achamos nenhum resultado para '${state.movies.movie}'`}
+                </C.Text>
+              </C.Container>
+            )}
+
             {requisicao.map((item, index) => (
               <C.Container
                 width="222px"
@@ -190,45 +215,51 @@ const MappedItems = () => {
               </C.Container>
             ))}
 
-            <C.Container displayFlex width="100%" padding="10px">
-              <C.Container width="50%" displayFlex justifyContent="flex-end">
-                <C.Container
-                  borderRadius="50%"
-                  border="1px solid #17c3b2"
-                  displayFlex
-                  alignItems="center"
-                  justifyContent="center"
-                  width="30px"
-                  heigth="30px"
-                  padding="5px"
-                >
-                  <C.Text fontSize="25px" color="white" bold textAlign="center">
-                    {state.movies.paginaAtual}
-                  </C.Text>
-                </C.Container>
-              </C.Container>
-
-              <C.Container displayFlex justifyContent="flex-end" width="50%">
-                <C.Container displayFlex>
-                  <C.Container onClick={voltarPagina} cursorPointer>
-                    <img src={back} alt="" width="40px" />
-                  </C.Container>
-
+            {!requisicao.length ? null : (
+              <C.Container displayFlex width="100%" padding="10px">
+                <C.Container width="50%" displayFlex justifyContent="flex-end">
                   <C.Container
-                    onClick={passarPagina}
-                    cursorPointer
-                    margin="0 30px"
+                    borderRadius="50%"
+                    border="1px solid #17c3b2"
+                    displayFlex
+                    alignItems="center"
+                    justifyContent="center"
+                    width="30px"
+                    heigth="30px"
+                    padding="5px"
                   >
-                    <img src={next} alt="" width="40px" />
+                    <C.Text
+                      fontSize="25px"
+                      color="white"
+                      bold
+                      textAlign="center"
+                    >
+                      {state.movies.paginaAtual}
+                    </C.Text>
+                  </C.Container>
+                </C.Container>
+
+                <C.Container displayFlex justifyContent="flex-end" width="50%">
+                  <C.Container displayFlex>
+                    <C.Container onClick={voltarPagina} cursorPointer>
+                      <img src={back} alt="" width="40px" />
+                    </C.Container>
+
+                    <C.Container
+                      onClick={passarPagina}
+                      cursorPointer
+                      margin="0 30px"
+                    >
+                      <img src={next} alt="" width="40px" />
+                    </C.Container>
                   </C.Container>
                 </C.Container>
               </C.Container>
-            </C.Container>
+            )}
           </C.Container>
         </C.Container>
-      
+      )}
     </React.Fragment>
-
   );
 };
 

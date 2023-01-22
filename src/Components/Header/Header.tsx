@@ -5,11 +5,12 @@ import glass from "../../imgs/glass.png";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
+import MappedItems from "../Items/MappedItems";
 
-const Header = () => {
+export const Header = () => {
   const { state, dispatch } = useContext(Context);
-  const [movie, setMovie] = useState('')
-  const navigate = useNavigate()
+  const [movie, setMovie] = useState("");
+  const navigate = useNavigate();
 
   function backToHome() {
     dispatch({
@@ -23,19 +24,22 @@ const Header = () => {
   }
 
   function changeValueInput(e: ChangeEvent<HTMLInputElement>) {
-    setMovie(e.target.value)
+    setMovie(e.target.value);
   }
 
   async function searchMovie() {
-    navigate(`/${movie}`)
-    var req = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=7c41526b8e248796d7b1e264a1e5730d&query=${movie}`
-    );
-    var json = await req.json();
+    dispatch({
+      type: "SEARCH_MOVIE",
+      payload: {
+        movie: movie,
+        homePage: false,
+        openPageSelectedCategory: true,
+        selectedCategory: movie,
+      },
+    });
   }
 
   return (
-
     <React.Fragment>
       <C.Container
         displayFlex
@@ -70,9 +74,9 @@ const Header = () => {
         >
           <img src={glass} alt="" width="23px" />
         </C.Container>
+
       </C.Container>
     </React.Fragment>
-
   );
 };
 

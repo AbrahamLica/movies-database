@@ -19,7 +19,8 @@ export const MoviesReducerInitialState: MoviesReducerInitialStateType = {
     selectedCategory: '',
     searchMovie: false,
     paginaAtual: 1,
-    loading: false
+    loading: false,
+    movie: ''
 }
 
 export function reducerMovies(state: MoviesReducerInitialStateType, action: ActionType) {
@@ -85,8 +86,10 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
         case 'SEARCH_MOVIE':
             return {
                 ...state,
-                searchMovie: action.payload.searchMovie,
-                homePage: action.payload.homePage
+                movie: action.payload.movie,
+                homePage: action.payload.homePage,
+                openPageSelectedCategory: action.payload.openPageSelectedCategory,
+                selectedCategory: action.payload.selectedCategory
             }
 
         case 'SWITCH_LOADING':

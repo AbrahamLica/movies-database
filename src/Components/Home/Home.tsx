@@ -20,7 +20,7 @@ const Home = () => {
       <C.Container
         displayFlex
         justifyContent="space-between"
-        width="95%"
+        width="95vw"
         padding="10px"
       >
         <Header></Header>

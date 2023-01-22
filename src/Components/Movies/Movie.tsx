@@ -16,7 +16,7 @@ const Movie = () => {
     var dataa = data.split("-");
     var dataFinal = `${dataa[2]}/${dataa[1]}/${dataa[0]}`;
     setDataFormatada(dataFinal);
-    console.log(dataa);
+    window.scrollTo(0, 0)
   }, []);
 
   function voltar() {
@@ -30,7 +30,7 @@ const Movie = () => {
       column
       alignItems="center"
       padding="20px"
-      width="60vw"
+      // width="60vw"
     >
       <img
         src={`https://image.tmdb.org/t/p/w300/${state.movies.img}`}

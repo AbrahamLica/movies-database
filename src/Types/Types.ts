@@ -12,6 +12,7 @@ export type MoviesReducerInitialStateType = {
     searchMovie: boolean
     paginaAtual: number
     loading: boolean
+    movie: string
 }
 
 export type ActionType = {
