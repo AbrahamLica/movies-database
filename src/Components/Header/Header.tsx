@@ -28,9 +28,9 @@ export const Header = () => {
   }
 
   async function searchMovie() {
-    if (movie == '') {
-      alert('Por favor, preencha o campo')
-    } else  {
+    if (movie == "") {
+      alert("Por favor, preencha o campo");
+    } else {
       dispatch({
         type: "SEARCH_MOVIE",
         payload: {
@@ -38,50 +38,31 @@ export const Header = () => {
           homePage: false,
           openPageSelectedCategory: true,
           selectedCategory: movie,
-          paginaAtual: 1
+          paginaAtual: 1,
         },
       });
     }
-    
   }
 
   return (
     <React.Fragment>
-      <C.Container
-        displayFlex
-        alignItems="center"
-        cursorPointer
-        onClick={backToHome}
-      >
+      <C.ContainerHeaderLeft onClick={backToHome}>
         <img src={logo} alt="" />
         <C.Text color="white" bold>
           Movies Library
         </C.Text>
-      </C.Container>
+      </C.ContainerHeaderLeft>
 
-      <C.Container displayFlex alignItems="center">
-        <C.Input
+      <C.ContainerHeaderRight>
+        <C.InputHeaderRight
           onChange={changeValueInput}
           value={movie}
-          backgroundColor="black"
-          color="white"
-          margin="0px 10px 0px 0px"
-        ></C.Input>
+        ></C.InputHeaderRight>
 
-        <C.Container
-          onClick={searchMovie}
-          backgroundColor="#17C3B2"
-          padding="5px"
-          borderRadius="5px"
-          displayFlex
-          alignItems="center"
-          justifyContent="center"
-          cursorPointer
-        >
+        <C.ContainerGlassImg onClick={searchMovie}>
           <img src={glass} alt="" width="23px" />
-        </C.Container>
-
-      </C.Container>
+        </C.ContainerGlassImg>
+      </C.ContainerHeaderRight>
     </React.Fragment>
   );
 };

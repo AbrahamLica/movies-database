@@ -6,44 +6,24 @@ import Card from "../Card/Card";
 import MappedItems from "../Items/MappedItems";
 
 const Home = () => {
-
   const { state, dispatch } = useContext(Context);
 
   return (
-    <C.Container
-      width="100%"
-      displayFlex
-      column
-      alignItems="center"
-      justifyContent="center"
-    >
-      <C.Container
-        displayFlex
-        justifyContent="space-between"
-        width="95vw"
-        padding="10px"
-      >
+    <C.ContainerMainHome>
+      <C.ContainerHeader>
         <Header></Header>
-      </C.Container>
-
+      </C.ContainerHeader>
 
       {state.movies.homePage && (
-        <C.Container
-          width="94vw"
-          displayFlex
-          justifyContent="space-between"
-          margin="30px"
-        >
+        <C.ContainerCard>
           <Card></Card>
-        </C.Container>
+        </C.ContainerCard>
       )}
 
-      <C.Container width="100%">
+      <C.Container>
         {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}
       </C.Container>
-
-
-    </C.Container>
+    </C.ContainerMainHome>
   );
 };
 

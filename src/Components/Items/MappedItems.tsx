@@ -135,54 +135,28 @@ const MappedItems = () => {
   return (
     <React.Fragment>
       {loading ? (
-        <C.Container
-          displayFlex
-          alignItems="center"
-          justifyContent="center"
-          heigth="80vh"
-          width="100vw"
-        >
+        <C.ContainerLoadingAnimation>
           <div className="three-body">
             <div className="three-body__dot"></div>
             <div className="three-body__dot"></div>
             <div className="three-body__dot"></div>
           </div>
-        </C.Container>
+        </C.ContainerLoadingAnimation>
       ) : (
-        <C.Container displayFlex column alignItems="center" width="100%">
-          <C.Text color="white" bold textAlign="center" fontSize="40px">
-            {title}
-          </C.Text>
+        <C.ContainerMainMappedItems>
+          <C.TextTitleMappedItems>{title}</C.TextTitleMappedItems>
 
-          <C.Container
-            width="100%"
-            displayFlex
-            flexWrap
-            alignItems="center"
-            justifyContent="center"
-          >
+          <C.ContainerMainItems>
             {!requisicao.length && (
-              <C.Container
-                displayFlex
-                alignItems="center"
-                justifyContent="center"
-              >
-                <C.Text color="white" fontSize="40px" textAlign="center">
+              <C.ContainerErro>
+                <C.TextErroMappedItems>
                   {`Ops! Não achamos nenhum resultado para '${state.movies.movie}'`}
-                </C.Text>
-              </C.Container>
+                </C.TextErroMappedItems>
+              </C.ContainerErro>
             )}
 
             {requisicao.map((item, index) => (
-              <C.Container
-                width="222px"
-                heigth="450px"
-                displayFlex
-                column
-                padding="30px"
-                margin="10px"
-                key={index}
-              >
+              <C.ContainerItem key={index}>
                 <C.Container>
                   <img
                     src={`${imagePath}${item.poster_path}`}
@@ -192,19 +166,12 @@ const MappedItems = () => {
                   />
                 </C.Container>
 
-                <C.Container width="90%" displayFlex column flex="1">
-                  <C.Container
-                    displayFlex
-                    column
-                    flex="1"
-                    alignItems="flex-start"
-                  >
-                    <C.Text color="white" bold fontSize="18px" id="teste">
-                      {item.title}
-                    </C.Text>
-                  </C.Container>
+                <C.ContainerBottomItem>
+                  <C.ContainerBottomItemTitle>
+                    <C.TextBottomItemTitle>{item.title}</C.TextBottomItemTitle>
+                  </C.ContainerBottomItemTitle>
 
-                  <C.Container displayFlex justifyContent="center">
+                  <C.ContainerButtonDetalhes>
                     <C.Button
                       onClick={() =>
                         abreDetalhes(
@@ -219,36 +186,22 @@ const MappedItems = () => {
                     >
                       Detalhes
                     </C.Button>
-                  </C.Container>
-                </C.Container>
-              </C.Container>
+                  </C.ContainerButtonDetalhes>
+                </C.ContainerBottomItem>
+              </C.ContainerItem>
             ))}
 
             {reqTotalPages < 20 ? null : (
-              <C.Container displayFlex width="100%" padding="10px">
-                <C.Container width="50%" displayFlex justifyContent="flex-end">
-                  <C.Container
-                    borderRadius="50%"
-                    border="1px solid #17c3b2"
-                    displayFlex
-                    alignItems="center"
-                    justifyContent="center"
-                    width="30px"
-                    heigth="30px"
-                    padding="5px"
-                  >
-                    <C.Text
-                      fontSize="25px"
-                      color="white"
-                      bold
-                      textAlign="center"
-                    >
+              <C.ContainerMainNextBack>
+                <C.ContainerMainPageAtual>
+                  <C.ContainerPageAtual>
+                    <C.TextPaginaAtual>
                       {state.movies.paginaAtual}
-                    </C.Text>
-                  </C.Container>
-                </C.Container>
+                    </C.TextPaginaAtual>
+                  </C.ContainerPageAtual>
+                </C.ContainerMainPageAtual>
 
-                <C.Container displayFlex justifyContent="flex-end" width="50%">
+                <C.ContainerNextBack>
                   <C.Container displayFlex>
                     <C.Container onClick={voltarPagina} cursorPointer>
                       <img src={back} alt="" width="40px" />
@@ -262,11 +215,11 @@ const MappedItems = () => {
                       <img src={next} alt="" width="40px" />
                     </C.Container>
                   </C.Container>
-                </C.Container>
-              </C.Container>
+                </C.ContainerNextBack>
+              </C.ContainerMainNextBack>
             )}
-          </C.Container>
-        </C.Container>
+          </C.ContainerMainItems>
+        </C.ContainerMainMappedItems>
       )}
     </React.Fragment>
   );

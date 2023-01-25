@@ -16,7 +16,7 @@ const Movie = () => {
     var dataa = data.split("-");
     var dataFinal = `${dataa[2]}/${dataa[1]}/${dataa[0]}`;
     setDataFormatada(dataFinal);
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, []);
 
   function voltar() {
@@ -24,61 +24,51 @@ const Movie = () => {
   }
 
   return (
-    
-    <C.Container
-      displayFlex
-      column
-      alignItems="center"
-      padding="20px"
-      // width="60vw"
-    >
-      <img
+    <C.Container displayFlex column alignItems="center" padding="20px 0">
+      <C.ImgMovie
         src={`https://image.tmdb.org/t/p/w300/${state.movies.img}`}
         alt=""
-        width={400}
-      />
+      >
+      </C.ImgMovie>
+        
+      
 
-      <C.Container width="400px">
-        <C.Text color="white" fontSize="25px" bold textAlign="center">
-          {state.movies.titulo}
-        </C.Text>
-      </C.Container>
+      <C.ContainerTitleMovie>
+        <C.TextTitleMovie>{state.movies.titulo}</C.TextTitleMovie>
+      </C.ContainerTitleMovie>
 
-      <C.Container displayFlex alignItems="center" justifyContent="center">
+      <C.ContainerVotos>
         <img src={star} alt="" width={30} height={30} />
         <C.Text color="white">{state.movies.mediaVotos}</C.Text>
-      </C.Container>
+      </C.ContainerVotos>
 
-      <C.Container width="500px">
-        <C.Container
-          displayFlex
-          column
+      <C.ContainerMainDetailsAndDate>
+        <C.ContainerMainDate
           alignItems={state.movies.detalhes ? "flex-start" : "center"}
         >
-          <C.Container displayFlex alignItems="center">
+          <C.ContainerDate>
             <img src={date} alt="" width={30} height={30} />
-            <C.Text color="white" margin="0 0 0 5px">
-              Data de Lançamento
-            </C.Text>
-          </C.Container>
+            <C.TextDate>Data de Lançamento</C.TextDate>
+          </C.ContainerDate>
+
           <C.Text color="white">{dataFormatada}</C.Text>
-        </C.Container>
+        </C.ContainerMainDate>
 
         {state.movies.detalhes ? (
           <React.Fragment>
-            <C.Container displayFlex alignItems="center">
+            <C.ContainerTitleDescricao displayFlex alignItems="center">
               <img src={description} alt="" width={30} height={30} />
               <C.Text color="white" margin="0 0 0 5px">
                 Descrição
               </C.Text>
-            </C.Container>
+            </C.ContainerTitleDescricao>
 
             <C.Container width="100%">
               <C.Text color="white">{state.movies.detalhes}</C.Text>
             </C.Container>
           </React.Fragment>
         ) : null}
-      </C.Container>
+      </C.ContainerMainDetailsAndDate>
 
       <C.Button onClick={voltar}>Voltar</C.Button>
     </C.Container>

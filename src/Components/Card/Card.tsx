@@ -43,32 +43,32 @@ const Card = () => {
 
   return (
     <React.Fragment>
-      <C.Container>
-        <C.ContainerCard
+      <C.ContainerItemCard>
+        <C.ContainerImgItemCard
           onClick={openLancamentos}
           backgroundImage={avengers}
-        ></C.ContainerCard>
+        ></C.ContainerImgItemCard>
 
         <C.TextCard onClick={openLancamentos}>Lançamentos</C.TextCard>
-      </C.Container>
+      </C.ContainerItemCard>
 
-      <C.Container>
-        <C.ContainerCard
+      <C.ContainerItemCard>
+        <C.ContainerImgItemCard
           onClick={openPopulares}
           backgroundImage={avatar}
-        ></C.ContainerCard>
+        ></C.ContainerImgItemCard>
 
         <C.TextCard onClick={openPopulares}>Populares</C.TextCard>
-      </C.Container>
+      </C.ContainerItemCard>
 
-      <C.Container>
-        <C.ContainerCard
+      <C.ContainerItemCard>
+        <C.ContainerImgItemCard
           onClick={openMaisVotados}
           backgroundImage={poderoso}
-        ></C.ContainerCard>
+        ></C.ContainerImgItemCard>
 
         <C.TextCard onClick={openMaisVotados}>Mais Votados</C.TextCard>
-      </C.Container>
+      </C.ContainerItemCard>
     </React.Fragment>
   );
 };
