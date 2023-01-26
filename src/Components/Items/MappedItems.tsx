@@ -89,8 +89,7 @@ const MappedItems = () => {
         movieOpen: true,
         img: img,
         mediaVotos: mediaVotos,
-        dataLançamento: dataLançamento,
-        // paginaAtual: "1",
+        dataLançamento: dataLançamento
       },
     });
 
@@ -210,12 +209,12 @@ const MappedItems = () => {
                     <C.Container
                       onClick={passarPagina}
                       cursorPointer
-                      margin="0 30px"
                     >
                       <img src={next} alt="" width="40px" />
                     </C.Container>
                   </C.Container>
                 </C.ContainerNextBack>
+
               </C.ContainerMainNextBack>
             )}
           </C.ContainerMainItems>

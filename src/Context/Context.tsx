@@ -20,7 +20,8 @@ export const MoviesReducerInitialState: MoviesReducerInitialStateType = {
     searchMovie: false,
     paginaAtual: 1,
     loading: false,
-    movie: ''
+    movie: '',
+    genreCard: false
 }
 
 export function reducerMovies(state: MoviesReducerInitialStateType, action: ActionType) {
@@ -96,6 +97,12 @@ export function reducerMovies(state: MoviesReducerInitialStateType, action: Acti
                 return {
                     ...state,
                     loading: action.payload.loading
+                }
+
+        case 'OPEN_GENRES':
+                return {
+                    ...state,
+                    genreCard: action.payload.genreCard
                 }
 
     }

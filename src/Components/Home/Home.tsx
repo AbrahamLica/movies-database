@@ -14,11 +14,7 @@ const Home = () => {
         <Header></Header>
       </C.ContainerHeader>
 
-      {state.movies.homePage && (
-        <C.ContainerCard>
-          <Card></Card>
-        </C.ContainerCard>
-      )}
+      {state.movies.homePage && <Card></Card>}
 
       <C.Container>
         {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}

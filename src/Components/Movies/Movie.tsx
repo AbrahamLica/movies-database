@@ -64,7 +64,7 @@ const Movie = () => {
             </C.ContainerTitleDescricao>
 
             <C.Container width="100%">
-              <C.Text color="white">{state.movies.detalhes}</C.Text>
+              <C.TextDetalhes>{state.movies.detalhes}</C.TextDetalhes>
             </C.Container>
           </React.Fragment>
         ) : null}

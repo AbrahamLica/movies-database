@@ -127,7 +127,7 @@ export const ContainerImgItemCard = styled.div<ContainerProps>`
   height: 200px;
   border-radius: 20px;
   cursor: pointer;
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: ${(props) => props.backgroundImage};
   background-size: cover;
   background-position: center;
 `;
@@ -227,6 +227,7 @@ export const ContainerHeader = styled.div<ContainerProps>`
 export const ContainerCard = styled.div<ContainerProps>`
   width: 94vw;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 30px;
 
@@ -289,10 +290,11 @@ export const TextErroMappedItems = styled.div<ContainerProps>`
 `;
 
 export const ContainerItem = styled.div<ContainerProps>`
-  width: 222px;
+  width: 200px;
   height: 450px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 30px;
   margin: 10px;
 `;
@@ -327,12 +329,21 @@ export const ContainerMainNextBack = styled.div<ContainerProps>`
   display: flex;
   width: 100%;
   padding: 10px;
+
+  @media(max-width: 560px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContainerMainPageAtual = styled.div<ContainerProps>`
   display: flex;
   width: 50%;
   justify-content: flex-end;
+
+  @media(max-width: 560px) {
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 export const ContainerPageAtual = styled.div<ContainerProps>`
@@ -357,6 +368,12 @@ export const ContainerNextBack = styled.div<ContainerProps>`
   display: flex;
   justify-content: flex-end;
   width: 50%;
+
+  @media(max-width: 560px) {
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 /////////////////////// MOVIE  ////////////////////
@@ -397,6 +414,10 @@ export const ContainerMainDetailsAndDate = styled.div<ContainerProps>`
   @media (max-width: 560px) {
     width: 300px;
   }
+
+  @media (max-width: 350px) {
+    width: 250px;
+  }
 `;
 
 export const ContainerMainDate = styled.div<ContainerProps>`
@@ -422,7 +443,23 @@ export const TextDate = styled.div<ContainerProps>`
 export const ContainerTitleDescricao = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  @media (max-width: 560px) {
+    justify-content: center;
+  }
+`;
+
+export const TextDetalhes = styled.div<ContainerProps>`
+  color: white;
+  margin: 16px 0;
+  
+  @media (max-width: 560px) {
+    text-align: center;
+  }
+
+  @media (max-width: 340px) {
+    /* font-size: 15px; */
+  }
 `;
 
 

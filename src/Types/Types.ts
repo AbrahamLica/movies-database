@@ -13,6 +13,7 @@ export type MoviesReducerInitialStateType = {
     paginaAtual: number
     loading: boolean
     movie: string
+    genreCard: boolean
 }
 
 export type ActionType = {
@@ -45,4 +46,9 @@ export type RequisicaoType = {
     poster_path?: string;
     release_date?: string;
   };
+
+  export type GenresType = {
+    id?: number
+    name?: string
+  }
 
