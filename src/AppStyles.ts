@@ -43,6 +43,7 @@ export type TextProps = {
   padding?: string;
   borderRadius?: string;
   cursorPointer?: boolean;
+  zIndex?: boolean
 };
 
 /////////////////// GERAL ///////////////////////
@@ -72,7 +73,7 @@ export const Container = styled.div<ContainerProps>`
 
 export const Button = styled.button`
   padding: 0.5em 1.3em;
-  border: 2px solid #17c3b2;
+  border: 2px solid #BA1200;
   position: relative;
   overflow: hidden;
   background-color: transparent;
@@ -82,8 +83,9 @@ export const Button = styled.button`
   transition: 0.3s;
   z-index: 1;
   font-family: inherit;
-  color: #17c3b2;
+  color: white;
   cursor: pointer;
+  border-radius: 10px;
 
   ::before {
     content: "";
@@ -93,7 +95,7 @@ export const Button = styled.button`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    background: #17c3b2;
+    background: #BA1200;
     transition: 0.5s ease;
     display: block;
     z-index: -1;
@@ -104,7 +106,7 @@ export const Button = styled.button`
   }
 
   :hover {
-    color: #111;
+    color: white;
   }
 `;
 
@@ -118,9 +120,47 @@ export const Text = styled.p<TextProps>`
   border-radius: ${(props) => props.borderRadius};
   padding: ${(props) => props.padding};
   cursor: ${(props) => (props.cursorPointer ? "pointer" : null)};
+  z-index: ${(props) => (props.zIndex ? "1" : "")};
 `;
 
+
+export const Link = styled.a<TextProps>`
+  color: ${(props) => props.color};
+  font-weight: ${(props) => (props.bold ? "bold" : "light")};
+  font-size: ${(props) => props.fontSize};
+  text-align: ${(props) => props.textAlign};
+  cursor: pointer;
+  text-decoration: none;
+`;
 ////////////////////////// CARD ///////////////////////
+
+export const ContainerCard = styled.div<ContainerProps>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin: 30px; */
+
+  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+  @media (max-width: 425px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+`;
+
+export const ContainerItemCard = styled.div<ContainerProps>`
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 30px;
+`;
 
 export const ContainerImgItemCard = styled.div<ContainerProps>`
   width: 200px;
@@ -135,19 +175,19 @@ export const ContainerImgItemCard = styled.div<ContainerProps>`
 export const TextCard = styled.p<TextProps>`
   cursor: pointer;
   text-align: center;
-  font-weight: bold;
-  color: black;
-  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+  font-size: 30px;
   padding: 6px;
   border-radius: 10px;
-  background-color: #17c3b2;
+  transition: .4s;
+
+  :hover {
+    background-color: #BA1200;
+  }
 `;
 
-export const ContainerItemCard = styled.div<ContainerProps>`
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-`;
+
 
 ////////////////////////// HEADER ///////////////////////
 
@@ -171,20 +211,16 @@ export const InputHeaderRight = styled.input<InputProps>`
   max-width: 190px;
   height: 10px;
   padding: 10px;
-  border: 2px solid #17c3b2;
+  border: 2px solid #BA1200;
   border-radius: 5px;
   color: white;
   font-size: ${(props) => props.fontSize};
   width: ${(props) => props.width};
   margin: 0px 10px 0px 0px;
 
-  :focus {
-    color: #17c3b2;
-    outline-color: #17c3b2;
-    box-shadow: -3px -3px 15px #17c3b2;
-    transition: 0.1s;
-    transition-property: box-shadow;
-  }
+  :focus{
+    outline: none;
+}
 `;
 
 export const ContainerGlassImg = styled.div<ContainerProps>`
@@ -194,7 +230,7 @@ export const ContainerGlassImg = styled.div<ContainerProps>`
   cursor: pointer;
   border-radius: 5px;
   padding: 5px;
-  background-color: #17c3b2;
+  background-color: #BA1200;
 `;
 
 ////////////////////////// HOME  ///////////////////////
@@ -212,6 +248,8 @@ export const ContainerHeader = styled.div<ContainerProps>`
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  border-bottom: 2px solid #BA1200;
+  margin-bottom: 20px;
 
   @media(max-width: 375px) {
     flex-direction: column;
@@ -224,25 +262,7 @@ export const ContainerHeader = styled.div<ContainerProps>`
   }
 `;
 
-export const ContainerCard = styled.div<ContainerProps>`
-  width: 94vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 30px;
 
-  @media (max-width: 768px) {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-  @media (max-width: 425px) {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-`;
 
 /////////////////////// MAPPED ITEMS  ////////////////////
 
@@ -260,7 +280,6 @@ export const ContainerMainMappedItems = styled.div<ContainerProps>`
   flex-direction: column;
   align-items: center;
 `;
-
 export const TextTitleMappedItems = styled.div<ContainerProps>`
   color: white;
   font-weight: bold;
@@ -290,6 +309,7 @@ export const TextErroMappedItems = styled.div<ContainerProps>`
 `;
 
 export const ContainerItem = styled.div<ContainerProps>`
+  /* background-color: #BA1200; */
   width: 200px;
   height: 450px;
   display: flex;
@@ -348,7 +368,7 @@ export const ContainerMainPageAtual = styled.div<ContainerProps>`
 
 export const ContainerPageAtual = styled.div<ContainerProps>`
   border-radius: 50%;
-  border: 1px solid #17c3b2;
+  border: 1px solid #BA1200;
   display: flex;
   align-items: center;
   justify-content: center;

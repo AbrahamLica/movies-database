@@ -58,6 +58,17 @@ const MappedItems = () => {
       setTimeout(() => {
         setLoading(false);
       }, 1000);
+    } else if (typeof state.movies.selectedCategory == "number") {
+      setLoading(true);
+      let req = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=pt-BR&page=${state.movies.paginaAtual}&with_genres=${state.movies.selectedCategory}`
+      );
+      let json = await req.json();
+      setRequisicao(json.results);
+      setReqTotalPages(json.total_pages);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     } else {
       setLoading(true);
       let req = await fetch(
@@ -89,7 +100,7 @@ const MappedItems = () => {
         movieOpen: true,
         img: img,
         mediaVotos: mediaVotos,
-        dataLançamento: dataLançamento
+        dataLançamento: dataLançamento,
       },
     });
 
@@ -126,6 +137,46 @@ const MappedItems = () => {
       state.movies.selectedCategory == "Mais Votados"
     ) {
       setTitle(state.movies.selectedCategory);
+    } else if (typeof state.movies.selectedCategory == "number") {
+      if (state.movies.selectedCategory == 28) {
+        setTitle("Ação");
+      } else if (state.movies.selectedCategory == 12) {
+        setTitle("Aventura");
+      } else if (state.movies.selectedCategory == 16) {
+        setTitle("Animação");
+      } else if (state.movies.selectedCategory == 35) {
+        setTitle("Comédia ");
+      } else if (state.movies.selectedCategory == 80) {
+        setTitle("Crime");
+      } else if (state.movies.selectedCategory == 99) {
+        setTitle("Documentário");
+      } else if (state.movies.selectedCategory == 18) {
+        setTitle("Drama");
+      } else if (state.movies.selectedCategory == 10751) {
+        setTitle("Família");
+      } else if (state.movies.selectedCategory == 14) {
+        setTitle("Fantasia");
+      } else if (state.movies.selectedCategory == 36) {
+        setTitle("História ");
+      } else if (state.movies.selectedCategory == 27) {
+        setTitle("Terror");
+      } else if (state.movies.selectedCategory == 10402) {
+        setTitle("Música");
+      } else if (state.movies.selectedCategory == 9648) {
+        setTitle("Mistério");
+      } else if (state.movies.selectedCategory == 10749) {
+        setTitle("Romance");
+      } else if (state.movies.selectedCategory == 878) {
+        setTitle("Ficção Científica");
+      } else if (state.movies.selectedCategory == 10770) {
+        setTitle("Cinema TV");
+      } else if (state.movies.selectedCategory == 53) {
+        setTitle("Thriller");
+      } else if (state.movies.selectedCategory == 10752) {
+        setTitle("Guerra");
+      } else if (state.movies.selectedCategory == 37) {
+        setTitle("Faroeste");
+      }
     } else {
       setTitle(`Mostrando resultados para '${state.movies.selectedCategory}'`);
     }
@@ -143,7 +194,9 @@ const MappedItems = () => {
         </C.ContainerLoadingAnimation>
       ) : (
         <C.ContainerMainMappedItems>
-          <C.TextTitleMappedItems>{title}</C.TextTitleMappedItems>
+          <C.TextTitleMappedItems>
+            {title}
+          </C.TextTitleMappedItems>
 
           <C.ContainerMainItems>
             {!requisicao.length && (
@@ -206,20 +259,27 @@ const MappedItems = () => {
                       <img src={back} alt="" width="40px" />
                     </C.Container>
 
-                    <C.Container
-                      onClick={passarPagina}
-                      cursorPointer
-                    >
+                    <C.Container onClick={passarPagina} cursorPointer>
                       <img src={next} alt="" width="40px" />
                     </C.Container>
                   </C.Container>
                 </C.ContainerNextBack>
-
               </C.ContainerMainNextBack>
             )}
           </C.ContainerMainItems>
         </C.ContainerMainMappedItems>
       )}
+
+      {/* <C.Text color="white" margin="">
+        Made By{" "}
+        <C.Link
+          color="white"
+          href="https://github.com/AbrahamLica"
+          target="_blank"
+        >
+          Abraham Licá
+        </C.Link>
+      </C.Text> */}
     </React.Fragment>
   );
 };

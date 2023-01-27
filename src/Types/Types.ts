@@ -8,7 +8,7 @@ export type MoviesReducerInitialStateType = {
     dataLançamento: string
     homePage: boolean
     openPageSelectedCategory: boolean
-    selectedCategory: string
+    selectedCategory: string | number
     searchMovie: boolean
     paginaAtual: number
     loading: boolean

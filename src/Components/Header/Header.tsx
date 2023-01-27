@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import * as C from "../../AppStyles";
-import logo from "../../imgs/logo.png";
-import glass from "../../imgs/glass.png";
+import logo from "../../imgs/logo.svg";
+import glass from "../../imgs/glass.svg";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
@@ -19,8 +19,11 @@ export const Header = () => {
         openPageSelectedCategory: false,
         homePage: true,
         paginaAtual: 1,
+        genreCard: false
       },
     });
+
+    setMovie('')
   }
 
   function changeValueInput(e: ChangeEvent<HTMLInputElement>) {
@@ -47,8 +50,8 @@ export const Header = () => {
   return (
     <React.Fragment>
       <C.ContainerHeaderLeft onClick={backToHome}>
-        <img src={logo} alt="" />
-        <C.Text color="white" bold>
+        <img src={logo} width='50px' alt="" />
+        <C.Text color="white" bold fontSize="25px" margin="0 0 0 10px">
           Movies Library
         </C.Text>
       </C.ContainerHeaderLeft>
@@ -60,7 +63,7 @@ export const Header = () => {
         ></C.InputHeaderRight>
 
         <C.ContainerGlassImg onClick={searchMovie}>
-          <img src={glass} alt="" width="23px" />
+          <img src={glass} alt="" width="24px" />
         </C.ContainerGlassImg>
       </C.ContainerHeaderRight>
     </React.Fragment>
