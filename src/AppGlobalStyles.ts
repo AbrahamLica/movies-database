@@ -16,3 +16,4 @@ export const GlobalStyle = createGlobalStyle`
         background-color: black;
     }
 `;
+ 
