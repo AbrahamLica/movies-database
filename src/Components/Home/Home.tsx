@@ -1,25 +1,26 @@
-import React from "react"
+import { useContext } from "react";
+import { Context } from "../../Context/Context";
 import Header from "../Header/Header";
-import Items from "../Items/Items"
-import Movie from "../Movies/Movie";
-import * as C from './AppGlobalStyles'
-import { GlobalStyle } from './AppGlobalStyles';
-
+import * as C from "../../AppStyles";
+import Card from "../Card/Card";
+import MappedItems from "../Items/MappedItems";
 
 const Home = () => {
+  const { state, dispatch } = useContext(Context);
 
-    return (
-        <React.Fragment>
-            <GlobalStyle />
-            <div>
-                <Header></Header>
-                <Items></Items>
-                <Movie></Movie>
-            </div>
-        </React.Fragment>
+  return (
+    <C.ContainerMainHome>
+      <C.ContainerHeader>
+        <Header></Header>
+      </C.ContainerHeader>
 
+      {state.movies.homePage && <Card></Card>}
 
-    )
-}
+      <C.Container>
+        {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}
+      </C.Container>
+    </C.ContainerMainHome>
+  );
+};
 
-export default Home
+export default Home;

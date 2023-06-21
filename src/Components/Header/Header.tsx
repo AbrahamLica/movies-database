@@ -1,34 +1,73 @@
-import React from 'react'
-import * as C from '../../AppStyles'
-import logo from '../../imgs/logo.png'
-import glass from '../../imgs/glass.png'
+import React, { ChangeEvent, useState } from "react";
+import * as C from "../../AppStyles";
+import logo from "../../imgs/logo.svg";
+import glass from "../../imgs/glass.svg";
+import { useContext } from "react";
+import { Context } from "../../Context/Context";
+import { useNavigate } from "react-router-dom";
+import MappedItems from "../Items/MappedItems";
 
-const Header = () => {
-    return (
-        <C.Container displayFlex alignItems='center' justifyContent='space-between' padding='20px'>
+export const Header = () => {
+  const { state, dispatch } = useContext(Context);
+  const [movie, setMovie] = useState("");
+  const navigate = useNavigate();
 
-            <C.Container displayFlex alignItems='center'>
-                <img src={logo} alt="" />
-                <C.Text color='white' bold>Movies Library</C.Text>
-            </C.Container>
+  function backToHome() {
+    dispatch({
+      type: "BACK_HOME",
+      payload: {
+        openPageSelectedCategory: false,
+        homePage: true,
+        paginaAtual: 1,
+        genreCard: false
+      },
+    });
 
-            <C.Container displayFlex alignItems='center'>
-                <C.Input backgroundColor='black' color='white' margin='0px 10px 0px 0px'></C.Input>
-                <C.Container
-                    backgroundColor='#17C3B2'
-                    padding='5px'
-                    borderRadius='5px'
-                    displayFlex
-                    alignItems='center'
-                    justifyContent='center'
-                    cursorPointer
-                >
-                    <img src={glass} alt="" width='23px' />
-                </C.Container>
-            </C.Container>
+    setMovie('')
+  }
 
-        </C.Container>
-    )
-}
+  function changeValueInput(e: ChangeEvent<HTMLInputElement>) {
+    setMovie(e.target.value);
+  }
 
-export default Header
+  async function searchMovie() {
+    if (movie == "") {
+      alert("Por favor, preencha o campo");
+    } else {
+      dispatch({
+        type: "SEARCH_MOVIE",
+        payload: {
+          movie: movie,
+          homePage: false,
+          openPageSelectedCategory: true,
+          selectedCategory: movie,
+          paginaAtual: 1,
+        },
+      });
+    }
+  }
+
+  return (
+    <React.Fragment>
+      <C.ContainerHeaderLeft onClick={backToHome}>
+        <img src={logo} width='50px' alt="" />
+        <C.Text color="white" bold fontSize="25px" margin="0 0 0 10px">
+          Movies Library
+        </C.Text>
+      </C.ContainerHeaderLeft>
+
+      <C.ContainerHeaderRight>
+        <C.InputHeaderRight
+          onChange={changeValueInput}
+          value={movie}
+        ></C.InputHeaderRight>
+
+        <C.ContainerGlassImg onClick={searchMovie}>
+          <img src={glass} alt="" width="24px" />
+        </C.ContainerGlassImg>
+      </C.ContainerHeaderRight>
+    </React.Fragment>
+  );
+};
+
+export default Header;
