@@ -14,6 +14,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='movie/:id' element={<Movie />} />
         </Routes>
+        \\esse codigo naop serve pra nada
       </BrowserRouter>
     </Fragment>
   );
