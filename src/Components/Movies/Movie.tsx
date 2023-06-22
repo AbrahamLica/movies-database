@@ -30,7 +30,6 @@ const Movie = () => {
         alt=""
       >
       </C.ImgMovie>
-        
       
 
       <C.ContainerTitleMovie>

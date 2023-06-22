@@ -14,7 +14,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/movie" element={<Movie />} />
         </Routes>
-        \\esse codigo naop serve pra nada
       </BrowserRouter>
     </Fragment>
   );
