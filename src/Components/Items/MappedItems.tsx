@@ -194,9 +194,7 @@ const MappedItems = () => {
         </C.ContainerLoadingAnimation>
       ) : (
         <C.ContainerMainMappedItems>
-          <C.TextTitleMappedItems>
-            {title}
-          </C.TextTitleMappedItems>
+          <C.TextTitleMappedItems>{title}</C.TextTitleMappedItems>
 
           <C.ContainerMainItems>
             {!requisicao.length && (
@@ -269,17 +267,6 @@ const MappedItems = () => {
           </C.ContainerMainItems>
         </C.ContainerMainMappedItems>
       )}
-
-      {/* <C.Text color="white" margin="">
-        Made By{" "}
-        <C.Link
-          color="white"
-          href="https://github.com/AbrahamLica"
-          target="_blank"
-        >
-          Abraham Licá
-        </C.Link>
-      </C.Text> */}
     </React.Fragment>
   );
 };
