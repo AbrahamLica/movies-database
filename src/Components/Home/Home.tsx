@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import Header from "../Header/Header";
-import * as C from "../../AppStyles";
+import * as C from "./HomeStyles";
 import Card from "../Card/Card";
 import MappedItems from "../Items/MappedItems";
 
@@ -16,7 +16,7 @@ const Home = () => {
 
       {state.movies.homePage && <Card></Card>}
 
-      <C.Container>
+      <C.Container width="100%">
         {state.movies.openPageSelectedCategory && <MappedItems></MappedItems>}
       </C.Container>
     </C.ContainerMainHome>

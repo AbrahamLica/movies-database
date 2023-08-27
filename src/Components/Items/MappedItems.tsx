@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
-import * as C from "../../AppStyles";
+import * as C from "./MappedItemsStyles";
 import { RequisicaoType } from "../../Types/Types";
 import { useNavigate } from "react-router-dom";
 import next from "../../imgs/next.svg";
@@ -184,89 +184,99 @@ const MappedItems = () => {
 
   return (
     <React.Fragment>
-      {loading ? (
-        <C.ContainerLoadingAnimation>
-          <div className="three-body">
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-          </div>
-        </C.ContainerLoadingAnimation>
-      ) : (
-        <C.ContainerMainMappedItems>
-          <C.TextTitleMappedItems>{title}</C.TextTitleMappedItems>
+      <C.Container backgroundColor="brown" width="100%">
+        {loading ? (
+          <C.ContainerLoadingAnimation>
+            <div className="three-body">
+              <div className="three-body__dot"></div>
+              <div className="three-body__dot"></div>
+              <div className="three-body__dot"></div>
+            </div>
+          </C.ContainerLoadingAnimation>
+        ) : (
+          <C.ContainerMainMappedItems>
+            <C.TextTitleMappedItems>
+              <C.Text color="white">{title}</C.Text>
+            </C.TextTitleMappedItems>
 
-          <C.ContainerMainItems>
-            {!requisicao.length && (
+            <C.ContainerMainItems>
+              {/* {!requisicao.length && (
               <C.ContainerErro>
                 <C.TextErroMappedItems>
                   {`Ops! Não achamos nenhum resultado para '${state.movies.movie}'`}
                 </C.TextErroMappedItems>
               </C.ContainerErro>
-            )}
+            )} */}
 
-            {requisicao.map((item, index) => (
-              <C.ContainerItem key={index}>
-                <C.Container>
-                  <img
-                    src={`${imagePath}${item.poster_path}`}
-                    alt=""
-                    width={200}
-                    height={300}
-                  />
-                </C.Container>
-
-                <C.ContainerBottomItem>
-                  <C.ContainerBottomItemTitle>
-                    <C.TextBottomItemTitle>{item.title}</C.TextBottomItemTitle>
-                  </C.ContainerBottomItemTitle>
-
-                  <C.ContainerButtonDetalhes>
-                    <C.Button
-                      onClick={() =>
-                        abreDetalhes(
-                          item.id,
-                          item.title,
-                          item.overview,
-                          item.poster_path,
-                          item.vote_average,
-                          item.release_date
-                        )
-                      }
-                    >
-                      Detalhes
-                    </C.Button>
-                  </C.ContainerButtonDetalhes>
-                </C.ContainerBottomItem>
-              </C.ContainerItem>
-            ))}
-
-            {reqTotalPages < 20 ? null : (
-              <C.ContainerMainNextBack>
-                <C.ContainerMainPageAtual>
-                  <C.ContainerPageAtual>
-                    <C.TextPaginaAtual>
-                      {state.movies.paginaAtual}
-                    </C.TextPaginaAtual>
-                  </C.ContainerPageAtual>
-                </C.ContainerMainPageAtual>
-
-                <C.ContainerNextBack>
-                  <C.Container displayFlex>
-                    <C.Container onClick={voltarPagina} cursorPointer>
-                      <img src={back} alt="" width="40px" />
-                    </C.Container>
-
-                    <C.Container onClick={passarPagina} cursorPointer>
-                      <img src={next} alt="" width="40px" />
-                    </C.Container>
+              {requisicao.map((item, index) => (
+                <C.ContainerItem key={index}>
+                  <C.Container>
+                    <img
+                      src={`${imagePath}${item.poster_path}`}
+                      alt=""
+                      width={200}
+                      height={300}
+                    />
                   </C.Container>
-                </C.ContainerNextBack>
-              </C.ContainerMainNextBack>
-            )}
-          </C.ContainerMainItems>
-        </C.ContainerMainMappedItems>
-      )}
+
+                  <C.ContainerBottomItem>
+                    <C.ContainerBottomItemTitle>
+                      <C.TextBottomItemTitle>
+                        {item.title}
+                      </C.TextBottomItemTitle>
+                    </C.ContainerBottomItemTitle>
+
+                    <C.ContainerButtonDetalhes>
+                      <C.Button
+                        onClick={() =>
+                          abreDetalhes(
+                            item.id,
+                            item.title,
+                            item.overview,
+                            item.poster_path,
+                            item.vote_average,
+                            item.release_date
+                          )
+                        }
+                      >
+                        Detalhes
+                      </C.Button>
+                    </C.ContainerButtonDetalhes>
+                  </C.ContainerBottomItem>
+                </C.ContainerItem>
+              ))}
+
+              {reqTotalPages < 20 ? null : (
+                <C.ContainerMainNextBack>
+                  <C.ContainerMainPageAtual>
+                    <C.ContainerPageAtual>
+                      <C.TextPaginaAtual>
+                        {state.movies.paginaAtual}
+                      </C.TextPaginaAtual>
+                    </C.ContainerPageAtual>
+                  </C.ContainerMainPageAtual>
+
+                  <C.ContainerNextBack>
+                    <C.Container displayFlex>
+                      <C.Container onClick={voltarPagina} cursorPointer>
+                        <img src={back} alt="" width="40px" />
+                      </C.Container>
+
+                      <C.Container onClick={passarPagina} cursorPointer>
+                        <img src={next} alt="" width="40px" />
+                      </C.Container>
+                    </C.Container>
+                  </C.ContainerNextBack>
+                </C.ContainerMainNextBack>
+              )}
+
+
+
+
+            </C.ContainerMainItems>
+          </C.ContainerMainMappedItems>
+        )}
+      </C.Container>
     </React.Fragment>
   );
 };

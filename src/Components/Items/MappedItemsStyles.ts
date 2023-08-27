@@ -43,7 +43,7 @@ export type TextProps = {
   padding?: string;
   borderRadius?: string;
   cursorPointer?: boolean;
-  zIndex?: boolean
+  zIndex?: boolean;
 };
 
 /////////////////// GERAL ///////////////////////
@@ -73,7 +73,7 @@ export const Container = styled.div<ContainerProps>`
 
 export const Button = styled.button`
   padding: 0.5em 1.3em;
-  border: 2px solid #BA1200;
+  border: 2px solid #ba1200;
   position: relative;
   overflow: hidden;
   background-color: transparent;
@@ -95,7 +95,7 @@ export const Button = styled.button`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    background: #BA1200;
+    background: #ba1200;
     transition: 0.5s ease;
     display: block;
     z-index: -1;
@@ -123,7 +123,6 @@ export const Text = styled.p<TextProps>`
   z-index: ${(props) => (props.zIndex ? "1" : "")};
 `;
 
-
 export const Link = styled.a<TextProps>`
   color: ${(props) => props.color};
   font-weight: ${(props) => (props.bold ? "bold" : "light")};
@@ -132,139 +131,8 @@ export const Link = styled.a<TextProps>`
   cursor: pointer;
   text-decoration: none;
 `;
-////////////////////////// CARD ///////////////////////
 
-export const ContainerCard = styled.div<ContainerProps>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  /* margin: 30px; */
-
-  @media (max-width: 768px) {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-  @media (max-width: 425px) {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-`;
-
-export const ContainerItemCard = styled.div<ContainerProps>`
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  margin: 30px;
-`;
-
-export const ContainerImgItemCard = styled.div<ContainerProps>`
-  width: 200px;
-  height: 200px;
-  border-radius: 20px;
-  cursor: pointer;
-  background-image: ${(props) => props.backgroundImage};
-  background-size: cover;
-  background-position: center;
-`;
-
-export const TextCard = styled.p<TextProps>`
-  cursor: pointer;
-  text-align: center;
-  font-weight: bolder;
-  color: white;
-  font-size: 30px;
-  padding: 6px;
-  border-radius: 10px;
-  transition: .4s;
-
-  :hover {
-    background-color: #BA1200;
-  }
-`;
-
-
-
-////////////////////////// HEADER ///////////////////////
-
-export const ContainerHeaderLeft = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  @media(max-width: 375px) {
-    margin-bottom: 20px;
-  }
-`;
-
-export const ContainerHeaderRight = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-`;
-
-export const InputHeaderRight = styled.input<InputProps>`
-  background-color: black;
-  max-width: 190px;
-  height: 10px;
-  padding: 10px;
-  border: 2px solid #BA1200;
-  border-radius: 5px;
-  color: white;
-  font-size: ${(props) => props.fontSize};
-  width: ${(props) => props.width};
-  margin: 0px 10px 0px 0px;
-
-  :focus{
-    outline: none;
-}
-`;
-
-export const ContainerGlassImg = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: #BA1200;
-`;
-
-////////////////////////// HOME  ///////////////////////
-
-export const ContainerMainHome = styled.div<ContainerProps>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export const ContainerHeader = styled.div<ContainerProps>`
-  width: 95vw;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 2px solid #BA1200;
-  margin-bottom: 20px;
-
-  @media(max-width: 375px) {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media(max-width: 320px) {
-    width: 70%;
-    justify-content: center;
-  }
-`;
-
-
-
-/////////////////////// MAPPED ITEMS  ////////////////////
+////////////////////// MAPPED ITEMS  ////////////////////
 
 export const ContainerLoadingAnimation = styled.div<ContainerProps>`
   width: 100vw;
@@ -276,15 +144,10 @@ export const ContainerLoadingAnimation = styled.div<ContainerProps>`
 
 export const ContainerMainMappedItems = styled.div<ContainerProps>`
   display: flex;
-  width: 100%;
+  width: 90%;
+  background-color: green;
   flex-direction: column;
   align-items: center;
-`;
-export const TextTitleMappedItems = styled.div<ContainerProps>`
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 40px;
 `;
 
 export const ContainerMainItems = styled.div<ContainerProps>`
@@ -295,10 +158,21 @@ export const ContainerMainItems = styled.div<ContainerProps>`
   justify-content: center;
 `;
 
+export const TextTitleMappedItems = styled.div<ContainerProps>`
+  /* color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 40px;*/
+  background-color: blue; 
+  max-width: 400px;
+  /* width: 10vw; */
+`;
+
 export const ContainerErro = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: red;
 `;
 
 export const TextErroMappedItems = styled.div<ContainerProps>`
@@ -350,7 +224,7 @@ export const ContainerMainNextBack = styled.div<ContainerProps>`
   width: 100%;
   padding: 10px;
 
-  @media(max-width: 560px) {
+  @media (max-width: 560px) {
     flex-direction: column;
   }
 `;
@@ -360,7 +234,7 @@ export const ContainerMainPageAtual = styled.div<ContainerProps>`
   width: 50%;
   justify-content: flex-end;
 
-  @media(max-width: 560px) {
+  @media (max-width: 560px) {
     justify-content: center;
     width: 100%;
   }
@@ -368,7 +242,7 @@ export const ContainerMainPageAtual = styled.div<ContainerProps>`
 
 export const ContainerPageAtual = styled.div<ContainerProps>`
   border-radius: 50%;
-  border: 1px solid #BA1200;
+  border: 1px solid #ba1200;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -389,97 +263,9 @@ export const ContainerNextBack = styled.div<ContainerProps>`
   justify-content: flex-end;
   width: 50%;
 
-  @media(max-width: 560px) {
+  @media (max-width: 560px) {
     justify-content: center;
     width: 100%;
     margin-top: 20px;
   }
 `;
-
-/////////////////////// MOVIE  ////////////////////
-
-export const ImgMovie = styled.img<ContainerProps>`
-  width: 400px;
-
-  @media (max-width: 560px) {
-    width: 200px;
-  }
-`;
-
-export const ContainerTitleMovie = styled.div<ContainerProps>`
-  width: 400px;
-
-  @media (max-width: 560px) {
-    width: 300px;
-  }
-`;
-
-export const TextTitleMovie = styled.div<ContainerProps>`
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 10px;
-`;
-
-export const ContainerVotos = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const ContainerMainDetailsAndDate = styled.div<ContainerProps>`
-  width: 500px;
-
-  @media (max-width: 560px) {
-    width: 300px;
-  }
-
-  @media (max-width: 350px) {
-    width: 250px;
-  }
-`;
-
-export const ContainerMainDate = styled.div<ContainerProps>`
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 560px) {
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
-export const ContainerDate = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-`;
-
-export const TextDate = styled.div<ContainerProps>`
-  color: white;
-  margin: 0 0 0 5px;
-`;
-
-export const ContainerTitleDescricao = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 560px) {
-    justify-content: center;
-  }
-`;
-
-export const TextDetalhes = styled.div<ContainerProps>`
-  color: white;
-  margin: 16px 0;
-  
-  @media (max-width: 560px) {
-    text-align: center;
-  }
-
-  @media (max-width: 340px) {
-    /* font-size: 15px; */
-  }
-`;
-
-

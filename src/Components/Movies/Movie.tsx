@@ -1,4 +1,4 @@
-import * as C from "../../AppStyles";
+import * as C from "./MoviesStyles";
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context/Context";
 import star from "../../imgs/star.png";

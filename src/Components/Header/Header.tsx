@@ -1,16 +1,26 @@
-import React, { ChangeEvent, useState } from "react";
-import * as C from "../../AppStyles";
-import logo from "../../imgs/logo.svg";
-import glass from "../../imgs/glass.svg";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
-import MappedItems from "../Items/MappedItems";
+import * as C from "./HeaderStyles";
+import logo from "../../imgs/logo.svg";
+import glass from "../../imgs/glass.svg";
 
 export const Header = () => {
   const { state, dispatch } = useContext(Context);
   const [movie, setMovie] = useState("");
   const navigate = useNavigate();
+
+  // useEffect(() => {}, []);
+
+  const detectEnter = (e: any) => {
+    if (e.key == "Enter" && movie) {
+      e.preventDefault();
+      searchMovie();
+    }
+  };
+
+  document.addEventListener("keydown", detectEnter);
 
   function backToHome() {
     dispatch({
@@ -19,11 +29,11 @@ export const Header = () => {
         openPageSelectedCategory: false,
         homePage: true,
         paginaAtual: 1,
-        genreCard: false
+        genreCard: false,
       },
     });
 
-    setMovie('')
+    setMovie("");
   }
 
   function changeValueInput(e: ChangeEvent<HTMLInputElement>) {
@@ -50,7 +60,7 @@ export const Header = () => {
   return (
     <React.Fragment>
       <C.ContainerHeaderLeft onClick={backToHome}>
-        <img src={logo} width='50px' alt="" />
+        <img src={logo} width="50px" alt="" />
         <C.Text color="white" bold fontSize="25px" margin="0 0 0 10px">
           Movies Library
         </C.Text>
