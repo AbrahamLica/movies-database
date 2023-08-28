@@ -12,8 +12,9 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
+        max-width: 100%;
         background-color: black;
+        overflow-x: hidden;
     }
 `;
  

@@ -144,42 +144,39 @@ export const ContainerLoadingAnimation = styled.div<ContainerProps>`
 
 export const ContainerMainMappedItems = styled.div<ContainerProps>`
   display: flex;
-  width: 90%;
-  background-color: green;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const TextTitleMappedItems = styled.div<ContainerProps>`
+  padding: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  text-align: center;
+
+  @media (max-width: 425px) {
+    max-width: 80%;
+  }
 `;
 
 export const ContainerMainItems = styled.div<ContainerProps>`
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 `;
 
-export const TextTitleMappedItems = styled.div<ContainerProps>`
-  /* color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 40px;*/
-  background-color: blue; 
-  max-width: 400px;
-  /* width: 10vw; */
-`;
-
 export const ContainerErro = styled.div<ContainerProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: red;
-`;
+  /* max-width: 700px; */
+  padding: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
 
-export const TextErroMappedItems = styled.div<ContainerProps>`
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 40px;
+  @media (max-width: 425px) {
+    max-width: 50%;
+  }
 `;
 
 export const ContainerItem = styled.div<ContainerProps>`

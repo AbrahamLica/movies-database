@@ -16,7 +16,7 @@ const MappedItems = () => {
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const [reqTotalPages, setReqTotalPages] = useState<number>(0);
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -184,99 +184,95 @@ const MappedItems = () => {
 
   return (
     <React.Fragment>
-      <C.Container backgroundColor="brown" width="100%">
-        {loading ? (
-          <C.ContainerLoadingAnimation>
-            <div className="three-body">
-              <div className="three-body__dot"></div>
-              <div className="three-body__dot"></div>
-              <div className="three-body__dot"></div>
-            </div>
-          </C.ContainerLoadingAnimation>
-        ) : (
-          <C.ContainerMainMappedItems>
+      {loading ? (
+        <C.ContainerLoadingAnimation>
+          <div className="three-body">
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+          </div>
+        </C.ContainerLoadingAnimation>
+      ) : (
+        <C.ContainerMainMappedItems>
+          {requisicao.length ? (
             <C.TextTitleMappedItems>
-              <C.Text color="white">{title}</C.Text>
+              <C.Text color="white" fontSize="1.5rem" textAlign="center">
+                {title}
+              </C.Text>
             </C.TextTitleMappedItems>
+          ) : null}
 
-            <C.ContainerMainItems>
-              {/* {!requisicao.length && (
+          <C.ContainerMainItems>
+            {!requisicao.length && (
               <C.ContainerErro>
-                <C.TextErroMappedItems>
-                  {`Ops! Não achamos nenhum resultado para '${state.movies.movie}'`}
-                </C.TextErroMappedItems>
+                <C.Text color="white" fontSize="1.2rem" textAlign="center">
+                  {`Ops! Não achamos nenhum resultado para: "${state.movies.movie}"`}
+                </C.Text>
               </C.ContainerErro>
-            )} */}
+            )}
 
-              {requisicao.map((item, index) => (
-                <C.ContainerItem key={index}>
-                  <C.Container>
-                    <img
-                      src={`${imagePath}${item.poster_path}`}
-                      alt=""
-                      width={200}
-                      height={300}
-                    />
-                  </C.Container>
+            {requisicao.map((item, index) => (
+              <C.ContainerItem key={index}>
+                <C.Container>
+                  <img
+                    src={`${imagePath}${item.poster_path}`}
+                    alt=""
+                    width={200}
+                    height={300}
+                  />
+                </C.Container>
 
-                  <C.ContainerBottomItem>
-                    <C.ContainerBottomItemTitle>
-                      <C.TextBottomItemTitle>
-                        {item.title}
-                      </C.TextBottomItemTitle>
-                    </C.ContainerBottomItemTitle>
+                <C.ContainerBottomItem>
+                  <C.ContainerBottomItemTitle>
+                    <C.TextBottomItemTitle>{item.title}</C.TextBottomItemTitle>
+                  </C.ContainerBottomItemTitle>
 
-                    <C.ContainerButtonDetalhes>
-                      <C.Button
-                        onClick={() =>
-                          abreDetalhes(
-                            item.id,
-                            item.title,
-                            item.overview,
-                            item.poster_path,
-                            item.vote_average,
-                            item.release_date
-                          )
-                        }
-                      >
-                        Detalhes
-                      </C.Button>
-                    </C.ContainerButtonDetalhes>
-                  </C.ContainerBottomItem>
-                </C.ContainerItem>
-              ))}
+                  <C.ContainerButtonDetalhes>
+                    <C.Button
+                      onClick={() =>
+                        abreDetalhes(
+                          item.id,
+                          item.title,
+                          item.overview,
+                          item.poster_path,
+                          item.vote_average,
+                          item.release_date
+                        )
+                      }
+                    >
+                      Detalhes
+                    </C.Button>
+                  </C.ContainerButtonDetalhes>
+                </C.ContainerBottomItem>
+              </C.ContainerItem>
+            ))}
 
-              {reqTotalPages < 20 ? null : (
-                <C.ContainerMainNextBack>
-                  <C.ContainerMainPageAtual>
-                    <C.ContainerPageAtual>
-                      <C.TextPaginaAtual>
-                        {state.movies.paginaAtual}
-                      </C.TextPaginaAtual>
-                    </C.ContainerPageAtual>
-                  </C.ContainerMainPageAtual>
+            {reqTotalPages < 20 ? null : (
+              <C.ContainerMainNextBack>
+                <C.ContainerMainPageAtual>
+                  <C.ContainerPageAtual>
+                    <C.TextPaginaAtual>
+                      {state.movies.paginaAtual}
+                    </C.TextPaginaAtual>
+                  </C.ContainerPageAtual>
+                </C.ContainerMainPageAtual>
 
-                  <C.ContainerNextBack>
-                    <C.Container displayFlex>
-                      <C.Container onClick={voltarPagina} cursorPointer>
-                        <img src={back} alt="" width="40px" />
-                      </C.Container>
-
-                      <C.Container onClick={passarPagina} cursorPointer>
-                        <img src={next} alt="" width="40px" />
-                      </C.Container>
+                <C.ContainerNextBack>
+                  <C.Container displayFlex>
+                    <C.Container onClick={voltarPagina} cursorPointer>
+                      <img src={back} alt="" width="40px" />
                     </C.Container>
-                  </C.ContainerNextBack>
-                </C.ContainerMainNextBack>
-              )}
 
-
-
-
-            </C.ContainerMainItems>
-          </C.ContainerMainMappedItems>
-        )}
-      </C.Container>
+                    <C.Container onClick={passarPagina} cursorPointer>
+                      <img src={next} alt="" width="40px" />
+                    </C.Container>
+                  </C.Container>
+                </C.ContainerNextBack>
+              </C.ContainerMainNextBack>
+            )}
+          </C.ContainerMainItems>
+        </C.ContainerMainMappedItems>
+      )}
     </React.Fragment>
   );
 };

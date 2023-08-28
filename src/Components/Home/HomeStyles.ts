@@ -149,15 +149,10 @@ export const ContainerHeader = styled.div<ContainerProps>`
   justify-content: space-between;
   padding: 10px;
   border-bottom: 2px solid #BA1200;
-  margin-bottom: 20px;
 
   @media(max-width: 375px) {
     flex-direction: column;
     align-items: center;
-  }
-
-  @media(max-width: 320px) {
-    width: 70%;
     justify-content: center;
   }
 `;
