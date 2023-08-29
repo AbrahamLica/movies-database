@@ -146,7 +146,7 @@ const Card = () => {
       {state.movies.genreCard ? (
         <C.ContainerCard>
           {requisicao.map((item, index) => (
-            <C.ContainerItemCard>
+            <C.ContainerItemCard key={index}>
               <C.ContainerImgItemCard
                 backgroundImage={ShowimgGenre(item.name)}
                 onClick={() => openGenreList(item.id)}

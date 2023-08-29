@@ -190,6 +190,18 @@ export const ContainerItem = styled.div<ContainerProps>`
   margin: 10px;
 `;
 
+export const imgMovie = styled.img<ContainerProps>`
+  width: 200px;
+  height: 300px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(102%);
+  }
+`;
+
+
 export const ContainerBottomItem = styled.div<ContainerProps>`
   width: 90%;
   display: flex;

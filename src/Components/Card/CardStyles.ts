@@ -141,7 +141,6 @@ export const ContainerCard = styled.div<ContainerProps>`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* margin: 30px; */
 
   @media (max-width: 768px) {
     align-items: center;
@@ -171,6 +170,11 @@ export const ContainerImgItemCard = styled.div<ContainerProps>`
   background-image: ${(props) => props.backgroundImage};
   background-size: cover;
   background-position: center;
+  transition: 0.3s;
+
+  :hover {
+    transform: scale(105%);
+  }
 `;
 
 export const TextCard = styled.p<TextProps>`

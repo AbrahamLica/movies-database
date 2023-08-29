@@ -213,14 +213,19 @@ const MappedItems = () => {
 
             {requisicao.map((item, index) => (
               <C.ContainerItem key={index}>
-                <C.Container>
-                  <img
-                    src={`${imagePath}${item.poster_path}`}
-                    alt=""
-                    width={200}
-                    height={300}
-                  />
-                </C.Container>
+                <C.imgMovie
+                  src={`${imagePath}${item.poster_path}`}
+                  onClick={() =>
+                    abreDetalhes(
+                      item.id,
+                      item.title,
+                      item.overview,
+                      item.poster_path,
+                      item.vote_average,
+                      item.release_date
+                    )
+                  }
+                ></C.imgMovie>
 
                 <C.ContainerBottomItem>
                   <C.ContainerBottomItemTitle>

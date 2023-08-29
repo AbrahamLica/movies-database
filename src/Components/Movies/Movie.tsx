@@ -38,7 +38,7 @@ const Movie = () => {
 
       <C.ContainerVotos>
         <img src={star} alt="" width={30} height={30} />
-        <C.Text color="white">{state.movies.mediaVotos}</C.Text>
+        <C.Text color="white">{state.movies.mediaVotos.toFixed(1)}</C.Text>
       </C.ContainerVotos>
 
       <C.ContainerMainDetailsAndDate>
