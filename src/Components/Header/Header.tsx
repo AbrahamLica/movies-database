@@ -58,7 +58,7 @@ export const Header = () => {
   }
 
   return (
-    <React.Fragment>
+    <C.MainContainerHeader>
       <C.ContainerHeaderLeft onClick={backToHome}>
         <img src={logo} width="50px" alt="" />
         <C.Text color="white" bold fontSize="25px" margin="0 0 0 10px">
@@ -76,7 +76,7 @@ export const Header = () => {
           <img src={glass} alt="" width="24px" />
         </C.ContainerGlassImg>
       </C.ContainerHeaderRight>
-    </React.Fragment>
+    </C.MainContainerHeader>
   );
 };
 

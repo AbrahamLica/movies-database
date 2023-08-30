@@ -144,10 +144,10 @@ export const ContainerMainHome = styled.div<ContainerProps>`
 `;
 
 export const ContainerHeader = styled.div<ContainerProps>`
-  width: 95vw;
+  width: 95%;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 0px;
   border-bottom: 2px solid #BA1200;
 
   @media(max-width: 375px) {

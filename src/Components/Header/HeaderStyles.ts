@@ -135,12 +135,25 @@ export const Link = styled.a<TextProps>`
 
 ////////////////////////// HEADER ///////////////////////
 
+
+export const MainContainerHeader = styled.div<ContainerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media(max-width: 410px) {
+    flex-direction: column;
+  }
+`;
+
+
 export const ContainerHeaderLeft = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   cursor: pointer;
 
-  @media(max-width: 375px) {
+  @media(max-width: 410px) {
     margin-bottom: 20px;
   }
 `;
