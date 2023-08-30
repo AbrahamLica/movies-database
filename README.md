@@ -16,6 +16,7 @@ Funcionalidades inclusas:
 
 - Javascript (React) 
 - Styled Components (estilização)
+- Typescript
 
 ## Autor
 
